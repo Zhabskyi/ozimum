@@ -1,0 +1,51 @@
+@import '../../styles/core.scss';
+.nav {
+  margin: 0 auto;
+  position: relative;
+  background-color: $color-primary-light;
+  font-size: $font-size-large;
+	display: flex;
+	justify-content: space-between;
+  width: 100%;
+  max-width: 1600px;
+  padding-top: 25px;
+  & li {
+    margin: 0 20px;
+  }
+  &__list {
+    max-width: 600px;
+    color: $color-tertiary-dark;
+    display: flex;
+		justify-content: flex-end; 
+
+    &_add {
+      margin-right: 60px;
+      text-align: center;
+    }
+    &_myItems {
+      margin-right: 10px;
+      text-align: center;
+    }
+  }
+  & h3{
+    padding-left: 20px;
+  }
+}
+
+.name {
+  margin: 0 2px;
+  color: $color-primary;
+}
+
+.nav_side {
+  display: flex;
+  flex-direction: column;
+}
+
+.eth {
+  position: absolute;
+  right: 18px;
+  top: 5px;
+  color: $color-primary-dark;
+  font-size: 15px;
+}
