@@ -1,51 +1,80 @@
-import {AUTHENTICATE_ACTION_TYPE, SET_TOKEN_ACTION_TYPE} from './actionTypes';
+import {
+  USER_LOADED,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  AUTH_ERROR
+} from '../actionTypes';
 import { LOCATION_CHANGE } from 'connected-react-router';
-import {addNotification} from '../notifications';
+//import { addNotification } from '../notifications';
+import axios from '../../utils/axios-instance';
 
 const TOKEN_KEY = 'token';
 
-export const login = (auth) => ({
-  type: AUTHENTICATE_ACTION_TYPE,
-  payload: auth
-});
+// Load User
+export const loadUser = async () => {
+  setAuthToken(localStorage.token);
 
-export const authError = () => (dispatch) => {
+  try {
+    const res = await axios.get('/auth');
+
+    if (res.data.msg !== 'Authorization denied!') {
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data
+      });
+    }
+  } catch (err) {
+    dispatch({ type: AUTH_ERROR });
+  }
+};
+
+// Register User
+export const registerUser = async data => {
+  try {
+    const res = await axios.post('/users', data);
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: res.data
+    });
+
+    loadUser();
+  } catch (err) {
+    dispatch({
+      type: REGISTER_FAIL,
+      payload: err.response.data
+    });
+  }
+};
+
+// Login User
+export const login = async formData => {
+  try {
+    const res = await axios.post('/auth', formData);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+
+    loadUser();
+  } catch (err) {
+    console.log('Error, login fail' + err);
+  }
+};
+
+  // Logout
+export  const logout = () => dispatch({ type: LOGOUT });
+
+export const authError = () => dispatch => {
   dispatch({
     type: LOCATION_CHANGE,
     payload: {
       location: {
-        pathname: '/',
+        pathname: '/'
       },
       action: 'POP'
     }
-  })
-};
-
-export const setToken = (token) => async () => {
-  localStorage.setItem(TOKEN_KEY, token);
-  return {
-    type: SET_TOKEN_ACTION_TYPE,
-    payload: token
-  };
-};
-
-export const validateToken = () => (dispatch) => {
-  const token = localStorage.getItem(TOKEN_KEY);
-  if (token) {
-    dispatch({
-      type: SET_TOKEN_ACTION_TYPE,
-      payload: token
-    });
-  } else {
-    dispatch({
-      type: LOCATION_CHANGE,
-      payload: {
-        location: {
-          pathname: '/',
-        },
-        action: 'PUSH'
-      }
-    });
-    dispatch(addNotification({message: 'Token expired'}));
-  }
+  });
 };

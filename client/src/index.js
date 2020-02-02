@@ -5,6 +5,7 @@ import {createBrowserHistory} from 'history';
 import { Provider } from "react-redux";
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux';
 import {data} from './store/data';
+import {auth} from './store/auth';
 import thunk from 'redux-thunk';
 import App from "./App";
 
@@ -19,7 +20,8 @@ const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
-  data
+  data,
+  auth
 });
 
 const customMiddleWare = (store) => (next) => (action) => {
