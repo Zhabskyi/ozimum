@@ -1,4 +1,4 @@
-FROM node:12.14.1 as builder
+FROM node:latest as builder
 WORKDIR /src
 COPY package*.json ./
 RUN npm install
