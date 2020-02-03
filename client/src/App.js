@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './containers/Navbar';
 
-const App = () => {
+const App = props => {
   useEffect(() => {
-    authContext.loadUser();
+    props.loadUser();
     // eslint-disable-next-line
   }, []);
   return (
-    <div>
+    <div className="container">
+      <Navbar/>
       <h3>test</h3>
       <h1>Just changed!</h1>
     </div>

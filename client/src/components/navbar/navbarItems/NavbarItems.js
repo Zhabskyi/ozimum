@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "../../button/Button";
 
 const NavbarItems = props => {
-  const { user, isAuthenticated, logout } = props;
+  const { user, isAuthenticated, onLogout } = props;
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -26,7 +26,7 @@ const NavbarItems = props => {
         <span className={classes.name}>{user && user.last_name}</span>
       </li>
       <li>
-        <Button onClick={logout} confirm>
+        <Button onClick={onLogout} confirm>
           Logout
         </Button>
       </li>

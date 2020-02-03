@@ -5,7 +5,7 @@ import {
   REGISTER_FAIL,
   LOGOUT,
   AUTH_ERROR
-} from "../actionTypes";
+} from "./actionTypes";
 
 const INITIAL_STATE = {
   isAuthenticated: false,

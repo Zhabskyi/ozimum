@@ -5,15 +5,15 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   AUTH_ERROR
-} from '../actionTypes';
+} from './actionTypes';
 import { LOCATION_CHANGE } from 'connected-react-router';
-//import { addNotification } from '../notifications';
+import setAuthToken from '../../utils/setAuthToken';
 import axios from '../../utils/axios-instance';
 
 const TOKEN_KEY = 'token';
 
 // Load User
-export const loadUser = async () => {
+export const loadUser = () => async (dispatch) => {
   setAuthToken(localStorage.token);
 
   try {
@@ -31,7 +31,7 @@ export const loadUser = async () => {
 };
 
 // Register User
-export const registerUser = async data => {
+export const registerUser =  () => async (dispatch, data) => {
   try {
     const res = await axios.post('/users', data);
     dispatch({
@@ -49,7 +49,7 @@ export const registerUser = async data => {
 };
 
 // Login User
-export const login = async formData => {
+export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/auth', formData);
 
@@ -65,7 +65,7 @@ export const login = async formData => {
 };
 
   // Logout
-export  const logout = () => dispatch({ type: LOGOUT });
+export  const logout = () => dispatch => dispatch({ type: LOGOUT });
 
 export const authError = () => dispatch => {
   dispatch({

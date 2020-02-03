@@ -1,21 +1,65 @@
+$overflowed-z-index: 5;
 $font-size-base: 16px;
 $font-size-lage: 20px;
 $font-size-xl: 28px;
 
-$base-font-color: #551a8b;
+$base-font-color: #020b11;
+$burger-size: 20px;
+$global-nav-height: 44px;
+$page-content-width: 960px;
 
+$link-color: rgb(102, 255, 127);$devices-width:  (
+  'lg': 1600px,
+  'md': 1024px,
+  'sm': 768px
+);
+$navbar-height: 60px;
+$navbar-height-mobile: 70px;
+$footer-height: 41px;
+$font-size-small: 14px;
+$font-size-base: 16px;
+$font-size-large: 18px;
+$font-size-mobile: 15px;
+$font-size-xl: 28px;
+$font-size-xl-mobile: 25px;
+$widget-box-shadow: 0px 0px 25px;
+$widget-border-radius: 8px;
+$page-padding: 8px;
+$overflowed-elements-z-index: 5;
+$portal-z-index: 99;
+$section-padding-default: 147px;
+$section-padding-mobile: 35px;
+
+$main-section-background-color:rgb(49, 58, 90);
 
 // COLORS
-$color-primary: #5ecc88;
-$color-primary-light: #f3fbeb;
+$color-primary: #272a3a;
+$color-primary-light: rgb(255, 234, 116);
 $color-primary-dark: #272a3a;
 
-$color-secondary-light: #e0f8c7;
-$color-secondary-dark: #359459;
+$color-secondary-light: #f5f5f7;
+$color-secondary-dark: #1e466e;
 
-$backdrop:  rgba(255, 255, 255, 0.7);
+$color-tertiary-light: #bf1650;
+$color-tertiary-dark: #10253a;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: rgba(238, 238, 238, 0.9);
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+//background
+$background_1: #70fee8;
+$background_2: #27588a;
 
 
 $white: #fff;
 $black: #000;
+$bluebell: #979fd0;
 
+$danger-color: #f50000;
+$error-color: #ffc343;
+$confirm-color: #ec598f;
+$details-color: #ffb900;

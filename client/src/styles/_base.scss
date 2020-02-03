@@ -1,19 +1,23 @@
-@import "./variables";
+@import './variables';
 
 * {
   box-sizing: border-box;
-  &:active, &:hover, &:focus {
+  &:active,
+  &:hover,
+  &:focus {
     outline: 0;
     -webkit-tap-highlight-color: transparent;
   }
 }
 
 html {
+  min-height: 100vh;
   font-size: $font-size-base;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Raleway','Source Sans Pro', sans-serif;
   color: $base-font-color;
   scroll-behavior: smooth;
-  background-color: $color-primary-light;
+  background: linear-gradient(175deg, $background_1 0%, $background_2 100%);
+
 }
 
 h1,
@@ -90,4 +94,12 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+button {
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }

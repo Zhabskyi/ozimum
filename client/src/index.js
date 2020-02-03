@@ -7,7 +7,7 @@ import {createStore, compose, applyMiddleware, combineReducers} from 'redux';
 import {data} from './store/data';
 import {auth} from './store/auth';
 import thunk from 'redux-thunk';
-import App from "./App";
+import App from "./containers/App";
 
 
 const composeEnhancers = (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
