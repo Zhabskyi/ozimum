@@ -1,19 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import classes from './Navbar.module.scss';
-import NavbarItems from './navbarItems/NavbarItems';
+import React  from "react";
+import { withRouter } from "react-router-dom";
+import classes from "./Navbar.module.scss";
+import NavbarItems from "./navbarItems/NavbarItems";
 
 const Navbar = props => {
-  const { isAuthenticated, logout, user, loadUser } = authContext;
 
-  useEffect(() => {
-    loadUser();
-    // eslint-disable-next-line
-  }, []);
+  const { isAuthenticated, logout, user } = props;
+
+
 
   return (
     <nav className={classes.nav}>
-      <NavbarItems title={props.title} />
+      <NavbarItems
+        user={user}
+        isAuthenticated={isAuthenticated}
+        logout={logout}
+      />
     </nav>
   );
 };

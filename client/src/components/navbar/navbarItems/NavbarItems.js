@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "../../button/Button";
 
 const NavbarItems = props => {
-  const { title, user, isAuthenticated, logout } = props;
+  const { user, isAuthenticated, logout } = props;
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -51,7 +51,7 @@ const NavbarItems = props => {
   return (
     <>
       <h3>
-        <Link to='/'>{title}</Link>
+        <Link to='/'>HOME</Link>
       </h3>
       <ul className={classes.nav__list}>
         {isAuthenticated ? linksUser : linksUnregistered}
