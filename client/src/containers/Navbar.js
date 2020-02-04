@@ -10,8 +10,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     user: getUser(state),
-    logout: state.logout,
-    isAuthenticated: state.isAuthenticated
+    logout: state.auth.logout,
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

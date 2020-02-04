@@ -10,7 +10,7 @@ const App = props => {
   useEffect(() => {
     props.loadUser();
     // eslint-disable-next-line
-  }, []);
+  }, [props.isAuthenticated]);
   return (
     <Router>
       <div className='container'>

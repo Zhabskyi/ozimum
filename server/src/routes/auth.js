@@ -4,11 +4,13 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const auth = require("../middleware/auth");
 const database = require("../db/database.js");
+const privateKey = require('../keys');
 
 // get user api/auth, private
 
 module.exports = db => {
   router.get("/auth", auth, async (req, res) => {
+
     try {
       const user = await database.getUserById(db, req.user.id);
       res.json(user);
@@ -19,6 +21,7 @@ module.exports = db => {
 
   // add user post api/auth, public
   router.post("/auth", async (req, res) => {
+
     try {
       let user = await database.getUserByEmail(db, req.body.email);
 
@@ -47,7 +50,7 @@ module.exports = db => {
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        privateKey.JwSecret,
         {
           expiresIn: 36000
         },

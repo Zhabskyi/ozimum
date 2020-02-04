@@ -27,6 +27,7 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
+      - JWSECRET=nochance
     expose:
       - '5000'
   client:

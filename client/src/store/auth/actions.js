@@ -10,14 +10,12 @@ import { LOCATION_CHANGE } from 'connected-react-router';
 import setAuthToken from '../../utils/setAuthToken';
 import axios from '../../utils/axios-instance';
 
-const TOKEN_KEY = 'token';
-
 // Load User
 export const loadUser = () => async (dispatch) => {
   setAuthToken(localStorage.token);
 
   try {
-    const res = await axios.get('auth');
+    const res = await axios.get('/auth');
 
     if (res.data.msg !== 'Authorization denied!') {
       dispatch({
@@ -31,7 +29,7 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register User
-export const registerUser =  () => async (dispatch, data) => {
+export const registerUser =  (data) => async (dispatch) => {
   try {
     const res = await axios.post('/users', data);
     dispatch({
@@ -39,8 +37,8 @@ export const registerUser =  () => async (dispatch, data) => {
       payload: res.data
     });
 
-    loadUser();
   } catch (err) {
+    console.log(err)
     dispatch({
       type: REGISTER_FAIL,
       payload: err.response.data

@@ -6,8 +6,10 @@ const mapDispatchToProps = (dispatch) => ({
   loadUser: () => dispatch(loadUser())
 });
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
 };
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
