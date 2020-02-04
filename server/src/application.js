@@ -9,8 +9,8 @@ const app = express();
 
 const db = require("./db");
 
-// const users = require("./routes/users");
-// const auth = require("./routes/auth");
+const users = require("./routes/users");
+const auth = require("./routes/auth");
 // const items = require("./routes/items");
 
 function read(file) {
@@ -33,8 +33,8 @@ module.exports = function application(ENV) {
   app.use(helmet());
   app.use(bodyparser.json());
 
-  // app.use("/api", auth(db));
-  // app.use("/api", users(db));
+  app.use("", auth(db));
+  app.use("", users(db));
   // app.use("/api", items(db));
 
   if (ENV === "development" || ENV === "test") {
@@ -43,7 +43,7 @@ module.exports = function application(ENV) {
       read(path.resolve(__dirname, `db/schema/${ENV}.sql`))
     ])
       .then(([create, seed]) => {
-        app.get("/api/debug/reset", (request, response) => {
+        app.get("/debug/reset", (request, response) => {
           db.query(create)
             .then(() => db.query(seed))
             .then(() => {

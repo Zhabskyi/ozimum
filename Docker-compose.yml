@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./server
     volumes:
-      - /src/node_modules
+      - /src/node_modules/
       - ./server:/src
     environment: 
       - PGUSER=postgres
@@ -34,7 +34,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
-      - /src/node_modules
+      - /src/node_modules/
       - ./client:/src
     expose:
       - '3000'

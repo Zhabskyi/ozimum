@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import {registerUser} from '../store/auth';
+import {registerUser} from '../../store/auth';
 
-import Navbar from '../components/navbar/Navbar';
+import FormRegister from '../../components/forms/FormRegister';
 
 const mapDispatchToProps = dispatch => ({
   registerUser: (data) => dispatch(registerUser(data))
@@ -15,6 +15,6 @@ const mapStateToProps = state => {
 };
 
 
-const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
+const RegisterContainer = connect(mapStateToProps, mapDispatchToProps)(FormRegister);
 
-export default NavbarContainer;
+export default RegisterContainer;

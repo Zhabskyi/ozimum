@@ -1,17 +1,15 @@
-import React, { useContext, useEffect } from "react";
-import useForm from "react-hook-form";
-import classes from "./Form.module.scss";
-
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import classes from './Form.module.scss';
 
 const Form = props => {
   const { registerUser, isAuthenticated, error } = props;
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
-
 
   const { register, handleSubmit, errors, watch } = useForm();
 
@@ -20,11 +18,11 @@ const Form = props => {
   };
 
   const intialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    password2: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    password2: ''
   };
 
   return (
@@ -40,9 +38,7 @@ const Form = props => {
           />
         </div>
         {errors.firstName && (
-          <p className={classes.error}>
-            First name required !
-          </p>
+          <p className={classes.error}>First name required !</p>
         )}
 
         <div>
@@ -55,9 +51,7 @@ const Form = props => {
           />
         </div>
         {errors.lastName && (
-          <p className={classes.error}>
-            Last name required !
-          </p>
+          <p className={classes.error}>Last name required !</p>
         )}
 
         <div>
@@ -67,10 +61,10 @@ const Form = props => {
             placeholder='email@mail.com'
             type='text'
             ref={register({
-              required: "This is required",
+              required: 'This is required',
               pattern: {
                 value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Invalid email address"
+                message: 'Invalid email address'
               }
             })}
           />
@@ -100,7 +94,7 @@ const Form = props => {
             type='password'
             placeholder='Confirm password'
             ref={register({
-              validate: value => value === watch("password")
+              validate: value => value === watch('password')
             })}
           />
         </div>
@@ -108,9 +102,7 @@ const Form = props => {
           <p className={classes.error}>Passwords does not match</p>
         )}
 
-        {error && (
-          <p className={classes.error}>User EXIST! Please login!</p>
-        )}
+        {error && <p className={classes.error}>User EXIST! Please login!</p>}
 
         <input type='submit' />
       </form>

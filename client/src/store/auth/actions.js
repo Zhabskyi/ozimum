@@ -17,7 +17,7 @@ export const loadUser = () => async (dispatch) => {
   setAuthToken(localStorage.token);
 
   try {
-    const res = await axios.get('/auth');
+    const res = await axios.get('auth');
 
     if (res.data.msg !== 'Authorization denied!') {
       dispatch({

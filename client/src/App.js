@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Navbar from './containers/Navbar';
 import TopSection from './components/topSection/TopSection';
+import Register from './containers/forms/FormRegister';
+import Login from './containers/forms/FormLogin';
 
 const App = props => {
   useEffect(() => {

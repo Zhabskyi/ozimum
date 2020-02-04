@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import useForm from "react-hook-form";
-import classes from "./Form.module.scss";
+import React, { useContext, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import classes from './Form.module.scss';
 
 const Form = props => {
-
   const { login, isAuthenticated } = props;
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
 
@@ -19,10 +18,10 @@ const Form = props => {
   };
 
   const intialValues = {
-    email: "",
-    password: ""
+    email: '',
+    password: ''
   };
-  
+
   return (
     <div className={classes.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
@@ -33,10 +32,10 @@ const Form = props => {
             placeholder='email@mail.com'
             type='text'
             ref={register({
-              required: "This is required",
+              required: 'This is required',
               pattern: {
                 value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Invalid email address"
+                message: 'Invalid email address'
               }
             })}
           />

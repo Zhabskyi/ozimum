@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from '../store/auth';
+import { login } from '../../store/auth';
 
 import FormLogin from '../../components/forms/FormLogin';
 
