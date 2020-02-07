@@ -20,7 +20,9 @@
   &_img {
     transition: all 0.3s ease;
     min-width: 300px;
+    max-width: 300px;
     min-height: 300px;
+    max-height: 300px;
     background: url('../../static/Camera.png');
     background-size: cover;
     &:hover {
