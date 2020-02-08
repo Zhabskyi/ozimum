@@ -5,6 +5,7 @@ import Navbar from './containers/Navbar';
 import TopSection from './components/topSection/TopSection';
 import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 const App = props => {
   useEffect(() => {
@@ -19,9 +20,9 @@ const App = props => {
           <Route exact path='/' component={TopSection} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          {/* <PrivateRoute exact path='/my-items'>
-          <PrivateItems />
-        </PrivateRoute> */}
+          <PrivateRoute exact path='/admin'>
+            <div>Privet</div>
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>

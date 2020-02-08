@@ -22,12 +22,15 @@ services:
       - /src/node_modules/
       - ./server:/src
     environment: 
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
+      - PGUSER=$DOCKER_PGUSER
+      - PGHOST=$DOCKER_PGHOST
+      - PGDATABASE=$DOCKER_PGDATABASE
+      - PGPASSWORD=$DOCKER_PGPASSWORD
       - PGPORT=5432
-      - JWSECRET=nochance
+      - JWSECRET=$DOCKER_JWSECRET
+      - ADMIN_EMAIL=$DOCKER_ADMIN_EMAIL
+      - ADMIN_PASSWORD=$DOCKER_ADMIN_PASSWORD
+      - ADMIN_SECRET=$DOCKER_ADMIN_SECRET
     expose:
       - '5000'
   client:
@@ -37,5 +40,7 @@ services:
     volumes:
       - /src/node_modules/
       - ./client:/src
+    env_file:
+      - ./client/local.env
     expose:
       - '3000'

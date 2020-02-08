@@ -4,11 +4,14 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT,
-  AUTH_ERROR
+  AUTH_ERROR,
+  ADMIN_LOGIN,
+  ADMIN_LOGOUT
 } from "./actionTypes";
 
 const INITIAL_STATE = {
   isAuthenticated: false,
+  isAdmin: false,
   token: localStorage.getItem("token"),
   loading: true,
   user: null,
@@ -47,6 +50,16 @@ export default (state = INITIAL_STATE, action) => {
         user: null,
         error: action.payload
       };
+    case ADMIN_LOGIN:
+      return {
+        ...state,
+        isAdmin: true
+      }
+      case ADMIN_LOGOUT:
+        return {
+          ...state,
+          isAdmin: false
+        }
     default:
       return state;
   }
