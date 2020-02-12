@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import classes from "../Navbar.module.scss";
-import { Link } from "react-router-dom";
-import Button from "../../button/Button";
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import classes from '../Navbar.module.scss';
+import { Link } from 'react-router-dom';
+import Button from '../../button/Button';
+import Logo from '../../../static/Logo.png';
 
 const NavbarItems = props => {
   const { user, isAuthenticated, onLogout } = props;
 
   useEffect(() => {
     if (!isAuthenticated) {
-      props.history.push("/");
+      props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
 
@@ -18,9 +19,6 @@ const NavbarItems = props => {
       <div className={classes.nav__list_myItems}>
         <Link to='/my-items'>My Items</Link>
       </div>
-      <li className={classes.nav__list_add}>
-        <Link to='/add-item'>Add Item</Link>
-      </li>
       <li>
         <span className={classes.name}>{user && user.first_name}</span>
         <span className={classes.name}>{user && user.last_name}</span>
@@ -35,14 +33,14 @@ const NavbarItems = props => {
 
   const linksUnregistered = (
     <>
-      <li>
+      {/* <li>
         <Link to='/register'>
           <Button confirm>Register</Button>
         </Link>
-      </li>
-      <li>
-        <Link to='/login'>
-          <Button confirm>Login</Button>
+      </li> */}
+      <li className={classes.nav__list_item}>
+        <Link className={classes.nav__list_item_ancor} to='/login'>
+          Sign in
         </Link>
       </li>
     </>
@@ -50,9 +48,18 @@ const NavbarItems = props => {
 
   return (
     <>
-      <h3>
-        <Link to='/'>HOME</Link>
-      </h3>
+      <ul className={[classes.nav__list, classes.empty].join(' ')}>
+        <li className={classes.nav__list_item}>
+          <Link className={classes.nav__list_item_ancor} to='/pricing'>
+            Pricing
+          </Link>
+        </li>
+      </ul>
+      <div className={classes.nav_block}>
+        <Link className={classes.logo} to='/'>
+          <img className={classes.log0_img} src={Logo} alt='Logo' />
+        </Link>
+      </div>
       <ul className={classes.nav__list}>
         {isAuthenticated ? linksUser : linksUnregistered}
       </ul>

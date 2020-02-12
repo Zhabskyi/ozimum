@@ -40,7 +40,7 @@ services:
     volumes:
       - /src/node_modules/
       - ./client:/src
-    env_file:
-      - ./client/local.env
+    environment: 
+      - ADMIN_EMAIL=$DOCKER_ADMIN_EMAIL
     expose:
       - '3000'
