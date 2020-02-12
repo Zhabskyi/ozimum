@@ -2,13 +2,13 @@
 .nav {
   margin: 0 auto;
   padding: 0 40px;
-  position: relative;
+  position: absolute;
   background-color: transparent;
   font-size: $font-size-large;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 1600px;
+  max-width: 2100px;
   color: $base-font-color;
   & li {
     margin: 0 20px;
@@ -68,7 +68,6 @@
 
 .name {
   margin: 0 2px;
-  color: $color-primary;
 }
 
 .nav_side {
@@ -86,4 +85,12 @@
   @include md {
     display: none;
   }
+}
+
+
+.basket {
+  height: 30px;
+  width: 40px;
+  padding-right: 10px;
+  display: inline-block;
 }

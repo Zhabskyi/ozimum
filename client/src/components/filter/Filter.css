@@ -1,0 +1,86 @@
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.tabs {
+  display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0;
+  overflow: hidden;
+  margin-top: 100px;
+}
+.tabs [class^='tab'] label,
+.tabs [class*=' tab'] label {
+  border: 1px solid #efedef;
+  border-radius: 20px;
+  color: #efedef;
+  cursor: pointer;
+  display: block;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 10px 20px;
+  text-align: center;
+}
+.tabs [class^='tab'] label:hover,
+.tabs [class*=' tab'] label:hover {
+  color: pink;
+}
+.tabs [class^='tab'] [type='radio'],
+.tabs [class*=' tab'] [type='radio'] {
+  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.tabs [class^='tab'] [type='radio']:hover,
+.tabs [class^='tab'] [type='radio']:focus,
+.tabs [class*=' tab'] [type='radio']:hover,
+.tabs [class*=' tab'] [type='radio']:focus {
+  border-bottom: 1px solid #fff7f9;
+}
+.tabs [class^='tab'] [type='radio']:checked,
+.tabs [class*=' tab'] [type='radio']:checked {
+  border-bottom: 2px solid #fff7f9;
+}
+.tabs [class^='tab'] [type='radio']:checked + div,
+.tabs [class*=' tab'] [type='radio']:checked + div {
+  opacity: 1;
+}
+.tabs [class^='tab'] [type='radio'] + div,
+.tabs [class*=' tab'] [type='radio'] + div {
+  display: block;
+  opacity: 0;
+  padding: 2rem 0;
+  width: 90%;
+  transition: all 0.3s ease-in-out;
+}
+/* .tabs .tab_2 {
+  width: 50%;
+} */
+.tabs .tab_2 [type='radio'] + div {
+  width: 200%;
+  margin-left: 200%;
+}
+.tabs .tab_2 [type='radio']:checked + div {
+  margin-left: 0;
+}
+.tabs .tab_2:last-child [type='radio'] + div {
+  margin-left: 100%;
+}
+.tabs .tab_2:last-child [type='radio']:checked + div {
+  margin-left: -100%;
+}
+.radio-input {
+  display: none;
+  visibility: hidden;
+}
