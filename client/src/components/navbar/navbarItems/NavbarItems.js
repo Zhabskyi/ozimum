@@ -24,8 +24,8 @@ const NavbarItems = props => {
       </li>
       <li className={classes.nav__list_item}>
         <Link
-          className={classes.nav__list_item_ancor}fg
-          to='/basket'
+          className={classes.nav__list_item_ancor}
+          to="/basket"
           style={{ paddingTop: '10px' }}
         >
           <img className={classes.basket} src={Basket} alt='Basket' />
@@ -33,8 +33,8 @@ const NavbarItems = props => {
         </Link>
       </li>
       <li className={classes.nav__list_item}>
-        <Link className={classes.nav__list_item_ancor} to=''>
-          <button onClick={onLogout} confirm>
+        <Link className={classes.nav__list_item_ancor} to="/registe">
+          <button onClick={onLogout}>
             Logout
           </button>
         </Link>

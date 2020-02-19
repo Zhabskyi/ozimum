@@ -4,7 +4,8 @@ import {
   LOGOUT,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  AUTH_ERROR
+  AUTH_ERROR,
+  ADMIN_LOGIN
 } from './actionTypes';
 import { LOCATION_CHANGE } from 'connected-react-router';
 import setAuthToken from '../../utils/setAuthToken';
@@ -51,11 +52,14 @@ export const registerUser =  (data) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/auth', formData);
-    console.log(res.data)
-    console.log(process.env);
+    console.log(res);
+    console.log(keys.adminSecret);
 
-    if (res.data.token === keys.adminSecret) {
-      console.log("DONE")
+    if (res.data.check === keys.adminSecret) {
+      dispatch({
+        type: ADMIN_LOGIN,
+        payload: res.data
+      });
     }
 
     dispatch({

@@ -24,7 +24,24 @@ module.exports = db => {
         req.body.email === privateKey.adminEmail &&
         req.body.password === privateKey.adminPassword
       ) {
-        return res.json({token: privateKey.adminSecret});
+
+        const adminPayload = {
+          user: {
+            id: privateKey.adminEmail
+          }
+        };
+
+        jwt.sign(
+          adminPayload,
+          privateKey.JwSecret,
+          {
+            expiresIn: 36000
+          },
+          (err, token) => {
+            if (err) throw err;
+            return res.json({ token, check: privateKey.adminSecret });
+          }
+        );
       }
       let user = await database.getUserByEmail(db, req.body.email);
 

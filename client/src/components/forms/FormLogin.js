@@ -4,13 +4,19 @@ import { useForm } from 'react-hook-form';
 import classes from './Form.module.scss';
 
 const Form = props => {
-  const { login, isAuthenticated } = props;
+  const { login, isAuthenticated, isAdmin } = props;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
+
+  useEffect(() => {
+    if (isAdmin) {
+      props.history.push('/admin');
+    }
+  }, [isAdmin, props.history]);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -66,7 +72,7 @@ const Form = props => {
           </div>
           <p className={classes.forget}>
             Forget password ?{' '}
-            <Link className={classes.forget_link}>Click Here</Link>
+            <Link className={classes.forget_link} to='/basket'>Click Here</Link>
           </p>
         </div>
       </form>

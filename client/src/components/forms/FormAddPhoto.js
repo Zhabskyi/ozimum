@@ -1,58 +1,48 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import useForm from 'react-hook-form';
-import Web3 from 'web3';
+import { useForm } from 'react-hook-form';
 
 import classes from './Form.module.scss';
-import FormCost from './FormCost';
-import ItemContex from '../../context/Item/ItemContext';
-import AuthContext from '../../context/auth/authContext';
-import BlockchainContext from '../../context/blockchain/blockchainContext';
 
-const FormAddItem = props => {
-  const itemContex = useContext(ItemContex);
-  const authContext = useContext(AuthContext);
-  const blockchainContext = useContext(BlockchainContext);
-
-  //Local state
+const FormAddPhoto = props => {
+  // Local state
   const [file, setFile] = useState(null);
 
-  const { addItem, editItem } = itemContex;
-  const { user } = authContext;
-  const { createProduct, editProduct } = blockchainContext;
+  // const { addItem, editItem } = itemContex;
+  // const { user } = authContext;
+  // const { createProduct, editProduct } = blockchainContext;
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    const depositWei = Web3.utils.toWei(data.deposit, 'Ether');
-    const rateWei = Web3.utils.toWei(data.daily_rate, 'Ether');
-    let newData = new FormData();
-    Object.keys(data).forEach(key => newData.append(key, data[key]));
-    newData.append('user_id', user.id);
-    newData.append('file', file);
-
-    if (!props.id) {
-      createProduct(
-        data.title,
-        data.description,
-        data.category,
-        depositWei,
-        rateWei
-      );
-      addItem(newData);
-    } else {
-      editItem(props.id, newData);
-      props.toggleFormDetails();
-      editProduct(
-        props.id,
-        data.title,
-        data.description,
-        data.category,
-        depositWei,
-        rateWei
-      );
-    }
-    redirectToHome();
+    // const depositWei = Web3.utils.toWei(data.deposit, 'Ether');
+    // const rateWei = Web3.utils.toWei(data.daily_rate, 'Ether');
+    // let newData = new FormData();
+    // Object.keys(data).forEach(key => newData.append(key, data[key]));
+    // newData.append('user_id', user.id);
+    // newData.append('file', file);
+    // if (!props.id) {
+    //   createProduct(
+    //     data.title,
+    //     data.description,
+    //     data.category,
+    //     depositWei,
+    //     rateWei
+    //   );
+    //   addItem(newData);
+    // } else {
+    //   editItem(props.id, newData);
+    //   props.toggleFormDetails();
+    //   editProduct(
+    //     props.id,
+    //     data.title,
+    //     data.description,
+    //     data.category,
+    //     depositWei,
+    //     rateWei
+    //   );
+    // }
+    // redirectToHome();
   };
 
   const redirectToHome = () => {
@@ -149,13 +139,6 @@ const FormAddItem = props => {
             <p className={classes.error}>Upload picture required</p>
           )}
 
-          <FormCost
-            props={props}
-            errors={errors}
-            register={register}
-            intialValues={intialValues}
-            classes={classes}
-          />
           <div className={classes.inputBox}>
             <input type='submit' value='Submit' />
           </div>
@@ -165,4 +148,4 @@ const FormAddItem = props => {
   );
 };
 
-export default withRouter(FormAddItem);
+export default withRouter(FormAddPhoto);

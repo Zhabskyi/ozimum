@@ -1,4 +1,3 @@
 export default {
-  adminSecret: process.env.ADMIN_SECRET,
-  secret: process.env
+  adminSecret: process.env.REACT_APP_ADMIN_SECRET
 };

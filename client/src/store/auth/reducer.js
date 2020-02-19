@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   isAuthenticated: false,
   isAdmin: false,
   token: localStorage.getItem("token"),
-  loading: true,
+  loading: false,
   user: null,
   error: null
 };
@@ -37,7 +37,15 @@ export default (state = INITIAL_STATE, action) => {
         isAuthenticated: true,
         loading: false
       };
-
+    case ADMIN_LOGIN:
+      localStorage.setItem("token", action.payload.token);
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false,
+        isAdmin: true
+      };
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGOUT:

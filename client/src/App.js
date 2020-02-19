@@ -5,7 +5,8 @@ import Navbar from './containers/Navbar';
 import TopSection from './components/topSection/TopSection';
 import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
-import PrivateRoute from './components/routing/PrivateRoute';
+import PrivateRoute from './containers/AdminRoute';
+import AddPhoto from './containers/forms/FormAddPhoto';
 
 const App = props => {
   useEffect(() => {
@@ -21,7 +22,8 @@ const App = props => {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <PrivateRoute exact path='/admin'>
-            <div>Privet</div>
+            <div>Private</div>
+            <AddPhoto />
           </PrivateRoute>
         </Switch>
       </div>

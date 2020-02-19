@@ -1,9 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, props, ...rest }) => {
-
-  const { isAuthenticated, loading } = props;
+const AdminRoute = ({
+  component: Component,
+  isAuthenticated,
+  loading,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -18,4 +21,4 @@ const PrivateRoute = ({ component: Component, props, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

@@ -41,6 +41,8 @@ services:
       - /src/node_modules/
       - ./client:/src
     environment: 
-      - ADMIN_EMAIL=$DOCKER_ADMIN_EMAIL
+      - REACT_APP_ADMIN_EMAIL=$DOCKER_ADMIN_EMAIL
+      - REACT_APP_ADMIN_PASSWORD=$DOCKER_ADMIN_PASSWORD
+      - REACT_APP_ADMIN_SECRET=$DOCKER_ADMIN_SECRET
     expose:
       - '3000'
