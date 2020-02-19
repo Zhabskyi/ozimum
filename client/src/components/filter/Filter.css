@@ -6,14 +6,20 @@ select:focus {
 }
 
 .tabs {
-  display: block;
+  /* width: 1000px; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 0;
+  justify-content: space-around;
+  margin: 0 auto;
   overflow: hidden;
   margin-top: 100px;
+}
+
+@media (max-width: 576px) {
+  .tabs {
+    flex-direction: column;
+  }
 }
 .tabs [class^='tab'] label,
 .tabs [class*=' tab'] label {
@@ -30,7 +36,7 @@ select:focus {
 }
 .tabs [class^='tab'] label:hover,
 .tabs [class*=' tab'] label:hover {
-  color: pink;
+  background-color: #27a1a1;
 }
 .tabs [class^='tab'] [type='radio'],
 .tabs [class*=' tab'] [type='radio'] {
@@ -72,6 +78,7 @@ select:focus {
   margin-left: 200%;
 }
 .tabs .tab_2 [type='radio']:checked + div {
+  padding: 0 20px;
   margin-left: 0;
 }
 .tabs .tab_2:last-child [type='radio'] + div {
@@ -83,4 +90,8 @@ select:focus {
 .radio-input {
   display: none;
   visibility: hidden;
+}
+
+.tab_2 {
+  padding: 0 20px;
 }

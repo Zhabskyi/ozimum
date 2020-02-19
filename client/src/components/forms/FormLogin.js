@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import classes from './Form.module.scss';
 
@@ -25,40 +26,49 @@ const Form = props => {
   return (
     <div className={classes.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            placeholder='email@mail.com'
-            type='text'
-            ref={register({
-              required: 'This is required',
-              pattern: {
-                value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: 'Invalid email address'
-              }
-            })}
-          />
-        </div>
-        {errors.email && <p>{errors.email.message}</p>}
+        <h2>Login</h2>
+        <div className={classes.input}>
+          <div className={classes.inputBox}>
+            <label htmlFor='email'>Email</label>
+            <input
+              name='email'
+              placeholder='email@mail.com'
+              type='text'
+              ref={register({
+                required: 'This is required',
+                pattern: {
+                  value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: 'Invalid email address'
+                }
+              })}
+            />
+          </div>
+          {errors.email && <p>{errors.email.message}</p>}
 
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            defaultValue={intialValues.password}
-            name='password'
-            placeholder='password'
-            type='password'
-            ref={register({ required: true, minLength: 5 })}
-          />
-        </div>
-        {errors.password && (
-          <p className={classes.error}>
-            Password should be more then 5 characters
+          <div className={classes.inputBox}>
+            <label htmlFor='password'>Password</label>
+            <input
+              defaultValue={intialValues.password}
+              name='password'
+              placeholder='password'
+              type='password'
+              ref={register({ required: true, minLength: 5 })}
+            />
+          </div>
+          {errors.password && (
+            <p className={classes.error}>
+              Password should be more then 5 characters
+            </p>
+          )}
+
+          <div className={classes.inputBox}>
+            <input type='submit' value='Sign In' />
+          </div>
+          <p className={classes.forget}>
+            Forget password ?{' '}
+            <Link className={classes.forget_link}>Click Here</Link>
           </p>
-        )}
-
-        <input type='submit' />
+        </div>
       </form>
     </div>
   );
