@@ -10,7 +10,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.auth.isAdmin
   };
 };
 

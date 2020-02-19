@@ -54,6 +54,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         token: null,
         isAuthenticated: false,
+        isAdnin: false,
         loading: false,
         user: null,
         error: action.payload

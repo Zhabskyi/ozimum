@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 const AdminRoute = ({
   component: Component,
   isAuthenticated,
+  isAdmin,
   loading,
   ...rest
 }) => {
@@ -11,7 +12,7 @@ const AdminRoute = ({
     <Route
       {...rest}
       render={props =>
-        !isAuthenticated && !loading ? (
+        !isAuthenticated && !isAdmin && !loading ? (
           <Redirect to='/' />
         ) : (
           <Component {...props} />

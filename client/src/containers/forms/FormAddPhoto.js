@@ -8,10 +8,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-  // return {
-  //   isAuthenticated: state.auth.isAuthenticated,
-  //   error: state.error
-  // };
+  return {
+    // isAuthenticated: state.auth.isAuthenticated,
+    // error: state.error
+  };
 };
 
 
