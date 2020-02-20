@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 //import {registerUser} from '../../store/auth';
 
 import FormAddPhoto from '../../components/forms/FormAddPhoto';
@@ -17,4 +18,4 @@ const mapStateToProps = state => {
 
 const FormAddPhotoContainer = connect(mapStateToProps, mapDispatchToProps)(FormAddPhoto);
 
-export default FormAddPhotoContainer;
+export default withRouter(FormAddPhotoContainer);

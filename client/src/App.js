@@ -5,7 +5,7 @@ import Navbar from './containers/Navbar';
 import TopSection from './components/topSection/TopSection';
 import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
-import PrivateRoute from './containers/AdminRoute';
+import AdminRoute from './containers/AdminRoute';
 import AddPhoto from './containers/forms/FormAddPhoto';
 
 const App = props => {
@@ -21,10 +21,9 @@ const App = props => {
           <Route exact path='/' component={TopSection} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          <PrivateRoute exact path='/admin'>
-            <div>Private</div>
+          <AdminRoute exact path='/admin'>
             <AddPhoto />
-          </PrivateRoute>
+          </AdminRoute>
         </Switch>
       </div>
     </Router>

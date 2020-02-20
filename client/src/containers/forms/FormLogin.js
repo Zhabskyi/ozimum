@@ -10,7 +10,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.isAdmin
+    isAdmin: state.auth.isAdmin,
+    error: state.auth.error
   };
 };
 

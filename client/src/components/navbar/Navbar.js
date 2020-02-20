@@ -1,5 +1,5 @@
 import React  from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import classes from "./Navbar.module.scss";
 import NavbarItems from "./navbarItems/NavbarItems";
 

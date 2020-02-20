@@ -1,25 +1,41 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const AdminRoute = ({
-  component: Component,
-  isAuthenticated,
-  isAdmin,
-  loading,
-  ...rest
-}) => {
+const AdminRoute = ({ children, props, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props =>
-        !isAuthenticated && !isAdmin && !loading ? (
-          <Redirect to='/' />
+        (props.isAuthenticated && props.isAdmin) ? (
+          children
         ) : (
-          <Component {...props} />
+          <Redirect to='/' />
         )
       }
     />
   );
-};
+}
+
+// const AdminRoute = ({
+//   component: Component,
+//   props,
+//   isAuthenticated,
+//   isAdmin,
+//   loading,
+//   ...rest
+// }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={props =>
+//         !isAuthenticated && !isAdmin && !loading ? (
+//           <Redirect to='/' />
+//         ) : (
+//           <Component {...props} />
+//         )
+//       }
+//     />
+//   );
+// };
 
 export default AdminRoute;

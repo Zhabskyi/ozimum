@@ -52,8 +52,6 @@ export const registerUser =  (data) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/auth', formData);
-    console.log(res);
-    console.log(keys.adminSecret);
 
     if (res.data.check === keys.adminSecret) {
       dispatch({
@@ -69,7 +67,10 @@ export const login = (formData) => async (dispatch) => {
 
     loadUser();
   } catch (err) {
-    console.log('Error, login fail' + err);
+    dispatch({
+      type: AUTH_ERROR,
+      payload: err.response.data.msg
+    });
   }
 };
 

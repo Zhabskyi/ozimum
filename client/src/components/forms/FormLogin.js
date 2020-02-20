@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import classes from './Form.module.scss';
+import FormHeader from './formHeader/FormHeader';
 
 const Form = props => {
-  const { login, isAuthenticated, isAdmin } = props;
+  const { login, isAuthenticated, isAdmin, error } = props;
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && !isAdmin) {
       props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
@@ -32,14 +33,15 @@ const Form = props => {
   return (
     <div className={classes.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <h2>Login</h2>
+        <FormHeader />
         <div className={classes.input}>
           <div className={classes.inputBox}>
             <label htmlFor='email'>Email</label>
             <input
               name='email'
               placeholder='email@mail.com'
-              type='text'
+              type='email'
+              autoComplete='email'
               ref={register({
                 required: 'This is required',
                 pattern: {
@@ -58,6 +60,7 @@ const Form = props => {
               name='password'
               placeholder='password'
               type='password'
+              autoComplete='password'
               ref={register({ required: true, minLength: 5 })}
             />
           </div>
@@ -72,8 +75,11 @@ const Form = props => {
           </div>
           <p className={classes.forget}>
             Forget password ?{' '}
-            <Link className={classes.forget_link} to='/basket'>Click Here</Link>
+            <Link className={classes.forget_link} to='/basket'>
+              Click Here
+            </Link>
           </p>
+          <p>{error ? error : null}</p>
         </div>
       </form>
     </div>

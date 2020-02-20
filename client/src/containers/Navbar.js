@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import {getUser, logout} from '../store/auth';
 
 import Navbar from '../components/navbar/Navbar';
@@ -18,4 +19,4 @@ const mapStateToProps = state => {
 
 const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
-export default NavbarContainer;
+export default withRouter(NavbarContainer);

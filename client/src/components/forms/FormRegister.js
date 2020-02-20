@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import FormHeader from './formHeader/FormHeader';
 import classes from './Form.module.scss';
 
 const Form = props => {
@@ -28,7 +29,7 @@ const Form = props => {
   return (
     <div className={classes.container}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <h2>Register</h2>
+        <FormHeader />
         <div className={classes.input}>
           <div className={classes.inputBox}>
             <label htmlFor='first_name'>First Name</label>
@@ -61,7 +62,8 @@ const Form = props => {
             <input
               name='email'
               placeholder='email@mail.com'
-              type='text'
+              type='email'
+              autoComplete='email'
               ref={register({
                 required: 'This is required',
                 pattern: {
@@ -79,6 +81,7 @@ const Form = props => {
               defaultValue={intialValues.password}
               name='password'
               type='password'
+              autoComplete='password'
               placeholder='password'
               ref={register({ required: true, minLength: 5 })}
             />
@@ -94,6 +97,7 @@ const Form = props => {
             <input
               name='password2'
               type='password'
+              autoComplete='password'
               placeholder='Confirm password'
               ref={register({
                 validate: value => value === watch('password')

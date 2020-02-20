@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import classes from './Form.module.scss';
@@ -148,4 +147,4 @@ const FormAddPhoto = props => {
   );
 };
 
-export default withRouter(FormAddPhoto);
+export default FormAddPhoto;

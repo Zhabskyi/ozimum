@@ -33,11 +33,11 @@ const NavbarItems = props => {
         </Link>
       </li>
       <li className={classes.nav__list_item}>
-        <Link className={classes.nav__list_item_ancor} to="/registe">
+        <div className={classes.nav__list_item_ancor}>
           <button onClick={onLogout}>
             Logout
           </button>
-        </Link>
+        </div>
       </li>
     </>
   );
