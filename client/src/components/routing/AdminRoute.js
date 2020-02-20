@@ -9,33 +9,11 @@ const AdminRoute = ({ children, props, ...rest }) => {
         (props.isAuthenticated && props.isAdmin) ? (
           children
         ) : (
-          <Redirect to='/' />
+          <Redirect to='/admin' />
         )
       }
     />
   );
-}
-
-// const AdminRoute = ({
-//   component: Component,
-//   props,
-//   isAuthenticated,
-//   isAdmin,
-//   loading,
-//   ...rest
-// }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={props =>
-//         !isAuthenticated && !isAdmin && !loading ? (
-//           <Redirect to='/' />
-//         ) : (
-//           <Component {...props} />
-//         )
-//       }
-//     />
-//   );
-// };
+};
 
 export default AdminRoute;

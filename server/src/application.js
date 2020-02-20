@@ -11,6 +11,7 @@ const db = require("./db");
 
 const users = require("./routes/users");
 const auth = require("./routes/auth");
+const photos = require("./routes/photos");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -34,6 +35,7 @@ module.exports = function application(ENV) {
 
   app.use("", auth(db));
   app.use("", users(db));
+  app.use("", photos(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([

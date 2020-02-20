@@ -14,8 +14,7 @@ const FormAddPhoto = props => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    // const depositWei = Web3.utils.toWei(data.deposit, 'Ether');
-    // const rateWei = Web3.utils.toWei(data.daily_rate, 'Ether');
+
     // let newData = new FormData();
     // Object.keys(data).forEach(key => newData.append(key, data[key]));
     // newData.append('user_id', user.id);

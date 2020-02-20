@@ -6,7 +6,7 @@ import TopSection from './components/topSection/TopSection';
 import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
 import AdminRoute from './containers/AdminRoute';
-import AddPhoto from './containers/forms/FormAddPhoto';
+import FormAddPhoto from './containers/forms/FormAddPhoto';
 
 const App = props => {
   useEffect(() => {
@@ -22,7 +22,8 @@ const App = props => {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <AdminRoute exact path='/admin'>
-            <AddPhoto />
+            <div>HELLO</div>
+            <FormAddPhoto />
           </AdminRoute>
         </Switch>
       </div>
