@@ -15,38 +15,29 @@ const FormAddPhoto = props => {
 
   const onSubmit = data => {
 
-    // let newData = new FormData();
-    // Object.keys(data).forEach(key => newData.append(key, data[key]));
-    // newData.append('user_id', user.id);
-    // newData.append('file', file);
-    // if (!props.id) {
-    //   createProduct(
-    //     data.title,
-    //     data.description,
-    //     data.category,
-    //     depositWei,
-    //     rateWei
-    //   );
-    //   addItem(newData);
-    // } else {
-    //   editItem(props.id, newData);
-    //   props.toggleFormDetails();
-    //   editProduct(
-    //     props.id,
-    //     data.title,
-    //     data.description,
-    //     data.category,
-    //     depositWei,
-    //     rateWei
-    //   );
-    // }
-    // redirectToHome();
+    let newData = new FormData();
+    Object.keys(data).forEach(key => newData.append(key, data[key]));
+    //newData.append('user_id', user.id);
+    newData.append('file', file);
+    if (!props.id) {
+      createProduct(
+        data.title,
+        data.description,
+        data.category
+      );
+      props.addItem(newData);
+    } else {
+      // editItem(props.id, newData);
+      // editProduct(
+      //   props.id,
+      //   data.title,
+      //   data.description,
+      //   data.category
+      // );
+    }
+    
   };
 
-  const redirectToHome = () => {
-    const { history } = props;
-    if (history) history.push('/');
-  };
 
   const handleSelectedFile = e => {
     e.preventDefault();

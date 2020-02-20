@@ -11,6 +11,7 @@ module.exports = db => {
   router.get('/auth', auth, async (req, res) => {
     try {
       if (req.user.id === privateKey.adminEmail) {
+        res.status(200).json({ msg: 'Admin!' });
         return;
       }
       const user = await database.getUserById(db, req.user.id);

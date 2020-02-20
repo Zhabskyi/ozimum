@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-//import {registerUser} from '../../store/auth';
 
 import FormAddPhoto from '../../components/forms/FormAddPhoto';
 
 const mapDispatchToProps = dispatch => ({
-  // registerUser: (data) => dispatch(registerUser(data))
+  addItem: (data) => dispatch(addItem(data));
 });
 
 const mapStateToProps = state => {
