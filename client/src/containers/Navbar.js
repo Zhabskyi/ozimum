@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
-import {getUser, logout} from '../store/auth';
+import { withRouter } from 'react-router-dom';
+import {
+  getUser,
+  logout,
+  getIfLogout,
+  getIfAuthenticated,
+  getIfAdmin
+} from '../store/auth';
 
 import Navbar from '../components/navbar/Navbar';
 
@@ -9,13 +15,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
+  console.log('STATE', state);
   return {
     user: getUser(state),
-    logout: state.auth.logout,
-    isAuthenticated: state.auth.isAuthenticated
+    logout: getIfLogout(state),
+    isAuthenticated: getIfAuthenticated(state),
+    isAdmin: getIfAdmin(state)
   };
 };
-
 
 const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
 

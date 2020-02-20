@@ -22,7 +22,6 @@ const App = props => {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <AdminRoute exact path='/admin'>
-            <div>HELLO</div>
             <FormAddPhoto />
           </AdminRoute>
         </Switch>

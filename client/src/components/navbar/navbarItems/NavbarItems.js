@@ -6,7 +6,8 @@ import Basket from '../../../static/basket_1.png';
 import Logo from '../../../static/Logo.png';
 
 const NavbarItems = props => {
-  const { user, isAuthenticated, onLogout } = props;
+  const { user, isAuthenticated, isAdmin, onLogout } = props;
+  console.log(props)
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -25,7 +26,7 @@ const NavbarItems = props => {
       <li className={classes.nav__list_item}>
         <Link
           className={classes.nav__list_item_ancor}
-          to="/basket"
+          to='/basket'
           style={{ paddingTop: '10px' }}
         >
           <img className={classes.basket} src={Basket} alt='Basket' />
@@ -34,9 +35,7 @@ const NavbarItems = props => {
       </li>
       <li className={classes.nav__list_item}>
         <div className={classes.nav__list_item_ancor}>
-          <button onClick={onLogout}>
-            Logout
-          </button>
+          <button onClick={onLogout}>Logout</button>
         </div>
       </li>
     </>
@@ -44,11 +43,6 @@ const NavbarItems = props => {
 
   const linksUnregistered = (
     <>
-      {/* <li>
-        <Link to='/register'>
-          <Button confirm>Register</Button>
-        </Link>
-      </li> */}
       <li className={classes.nav__list_item}>
         <Link
           className={classes.nav__list_item_ancor}
@@ -63,6 +57,21 @@ const NavbarItems = props => {
         <Link className={classes.nav__list_item_ancor} to='/login'>
           Sign in
         </Link>
+      </li>
+    </>
+  );
+
+  const linksAdmin = (
+    <>
+      <li className={classes.nav__list_item}>
+        <div className={classes.nav__list_item_ancor}>
+          <span className={classes.admin}>ADMIN</span>
+        </div>
+      </li>
+      <li className={classes.nav__list_item}>
+        <div className={classes.nav__list_item_ancor}>
+          <button onClick={onLogout}>Logout</button>
+        </div>
       </li>
     </>
   );
@@ -82,7 +91,11 @@ const NavbarItems = props => {
         </Link>
       </div>
       <ul className={classes.nav__list}>
-        {isAuthenticated ? linksUser : linksUnregistered}
+        {isAuthenticated && isAdmin
+          ? linksAdmin
+          : isAuthenticated
+          ? linksUser
+          : linksUnregistered}
       </ul>
     </>
   );

@@ -5,7 +5,7 @@ import NavbarItems from "./navbarItems/NavbarItems";
 
 const Navbar = props => {
 
-  const { isAuthenticated, onLogout, user } = props;
+  const { isAuthenticated, onLogout, user, isAdmin } = props;
 
 
 
@@ -13,6 +13,7 @@ const Navbar = props => {
     <nav className={classes.nav}>
       <NavbarItems
         user={user}
+        isAdmin={isAdmin}
         isAuthenticated={isAuthenticated}
         onLogout={onLogout}
       />
