@@ -44,28 +44,25 @@ const getUserById = function(db, userId) {
     .catch(err => console.log(err));
 };
 
-// const addItem = function(db, item) {
-//   return db
-//     .query(
-//       `
-//     INSERT INTO items (
-//      title, description, category, daily_rate, deposit, user_id, photo)
-//     VALUES ($1, $2, $3, $4, $5, $6, $7)
-//     RETURNING *
-//   `,
-//       [
-//         item.title,
-//         item.description,
-//         item.category,
-//         item.daily_rate,
-//         item.deposit,
-//         item.user_id,
-//         item.photo
-//       ]
-//     )
-//     .then(res => res.rows[0])
-//     .catch(err => console.log(err));
-// };
+const addPhoto = function(db, item) {
+  return db
+    .query(
+      `
+    INSERT INTO photos (
+     title, description, category, photo)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *
+  `,
+      [
+        item.title,
+        item.description,
+        item.category,
+        item.photo
+      ]
+    )
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
+};
 
 // const updateItem = function(db, item, id) {
 //   return db
@@ -111,5 +108,6 @@ const getUserById = function(db, userId) {
 module.exports = {
   addUser,
   getUserByEmail,
-  getUserById
+  getUserById,
+  addPhoto
 };

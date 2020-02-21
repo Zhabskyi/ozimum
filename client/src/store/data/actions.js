@@ -5,8 +5,7 @@ import {
   PHOTO_ERROR
 } from "./actionTypes";
 
-export const addPhoto = photo => async (dispatch, getState) => {
-  const state = getState();
+export const addPhoto = photo => async (dispatch) => {
   try {
     const res = await axios.post("/photos", photo);
 
@@ -21,21 +20,3 @@ export const addPhoto = photo => async (dispatch, getState) => {
     });
   }
 };
-
-  //Add Item
-  const addItem = async item => {
-    try {
-      const res = await axios.post("http://localhost:8001/api/items", item);
-
-      dispatch({
-        type: ADD_ITEM,
-        payload: res.data
-      });
-     getMyItems(res.data.user_id);
-    } catch (err) {
-      dispatch({
-        type: ITEM_ERROR,
-        payload: err.response
-      });
-    }
-  };
