@@ -1,12 +1,14 @@
 import {
   ADD_PHOTO,
   EDIT_PHOTO,
-  DELETE_PHOTO
-
+  DELETE_PHOTO,
+  PHOTO_ERROR
 } from "./actionTypes";
 
 const INITIAL_STATE = {
-  isShowModal: false
+  photos: null,
+  loading: false,
+  error: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -31,6 +33,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         photos: state.photos.filter(item => item.id !== action.payload),
         loading: false
+      };
+    case PHOTO_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return { ...state };
