@@ -14,8 +14,9 @@ const upload = multer({ storage: storage });
 module.exports = db => {
   router.get('/photos', async (req, res) => {
     try {
-      // const user = await database.getUserPhotos(db, req.user.id);
-      // res.json(user);
+      db.query(`SELECT * FROM photos`).then(({ rows: photos }) => {
+        res.json(photos);
+      });
     } catch (err) {
       res.status(500).send('Server Error');
     }

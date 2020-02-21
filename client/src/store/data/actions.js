@@ -4,6 +4,7 @@ import {
   DELETE_PHOTO,
   PHOTO_ERROR
 } from "./actionTypes";
+import axios from '../../utils/axios-instance';
 
 export const addPhoto = photo => async (dispatch) => {
   try {

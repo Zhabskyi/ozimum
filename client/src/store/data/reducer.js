@@ -23,7 +23,7 @@ export default (state = INITIAL_STATE, action) => {
     case EDIT_PHOTO:
       return {
         ...state,
-        photos: state.photos.map(item =>
+        photos: state.photos.map(photo =>
           photo.id === Number(action.payload.id) ? action.payload : photo
         ),
         loading: false

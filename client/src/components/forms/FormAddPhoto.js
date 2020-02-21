@@ -19,12 +19,7 @@ const FormAddPhoto = props => {
     Object.keys(data).forEach(key => newData.append(key, data[key]));
     //newData.append('user_id', user.id);
     newData.append('file', file);
-    if (!props.id) {
-      createProduct(
-        data.title,
-        data.description,
-        data.category
-      );
+    if (true) {
       props.addItem(newData);
     } else {
       // editItem(props.id, newData);
