@@ -25,25 +25,24 @@ module.exports = db => {
   //Add photo
   router.post('/photos', upload.single('file'), async (req, res) => {
     let info = req.body;
-    console.log("Info",info)
-    console.log("Image",req.file)
 
     try {
       const image = req.file;
 
+      const file = await Jimp.read(Buffer.from(image.buffer, 'base64'))
+        .then(async image => {
+          
+          const background = await Jimp.read('https://url/background.png');
+          const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
 
-      let file = await Jimp.read(image.buffer)
-        .then(image => {
-          console.log("IMAGE",image)
-          return image.resize(250, 250);
-          // Do stuff with the image.
+          image.resize(Jimp.AUTO, 900);
+          image.composite(background, 1000, 700);
+          image.print(font, 1000, 700, 'Logo');
+          return image.getBufferAsync(Jimp.AUTO);
         })
         .catch(err => {
-          console.log(err);
-          // Handle an exception.
+          res.status(500).json({ msg: 'Server Error', error: err });
         });
-
-        console.log("FILE", file)
 
       const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
 
@@ -57,9 +56,9 @@ module.exports = db => {
 
       const params = {
         Bucket: process.env.AWS_BUCKET_NAME,
-        Key: file.originalname,
-        Body: file.buffer,
-        ContentType: file.mimetype,
+        Key: image.originalname,
+        Body: file,
+        ContentType: image.mimetype,
         ACL: 'public-read'
       };
 
@@ -70,7 +69,7 @@ module.exports = db => {
           } else {
             const newFileUploaded = {
               description: req.body.description,
-              fileLink: s3FileURL + file.originalname,
+              fileLink: s3FileURL + image.originalname,
               s3_key: params.Key
             };
             info = { ...info, photo: newFileUploaded.fileLink };
@@ -79,13 +78,11 @@ module.exports = db => {
             res.send(photos);
           }
         } catch (err) {
-          console.error(err.message);
-          res.status(500).send('Server Error');
+          res.status(500).json({ msg: 'Server Error', error: err });
         }
       });
     } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).json({ msg: 'Server Error', error: err });
     }
   });
 

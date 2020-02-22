@@ -54,10 +54,10 @@ const addPhoto = function(db, item) {
     RETURNING *
   `,
       [
-        item.title,
-        item.description,
-        item.category,
-        item.photo
+        photo.title,
+        photo.description,
+        photo.category,
+        photo.photo
       ]
     )
     .then(res => res.rows[0])

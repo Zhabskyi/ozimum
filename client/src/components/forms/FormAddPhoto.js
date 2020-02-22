@@ -7,30 +7,16 @@ const FormAddPhoto = props => {
   // Local state
   const [file, setFile] = useState(null);
 
-  // const { addItem, editItem } = itemContex;
-  // const { user } = authContext;
-  // const { createProduct, editProduct } = blockchainContext;
-
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
 
     let newData = new FormData();
+
     Object.keys(data).forEach(key => newData.append(key, data[key]));
-    //newData.append('user_id', user.id);
-    newData.append('file', file);
-    if (true) {
-      props.addItem(newData);
-    } else {
-      // editItem(props.id, newData);
-      // editProduct(
-      //   props.id,
-      //   data.title,
-      //   data.description,
-      //   data.category
-      // );
-    }
     
+    newData.append('file', file);
+    props.addItem(newData); 
   };
 
 
