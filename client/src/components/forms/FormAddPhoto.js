@@ -4,17 +4,15 @@ import { useForm } from 'react-hook-form';
 import classes from './Form.module.scss';
 
 const FormAddPhoto = props => {
-  // Local state
-  const [file, setFile] = useState(null);
 
+  const [file, setFile] = useState(null);
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
 
     let newData = new FormData();
-
     Object.keys(data).forEach(key => newData.append(key, data[key]));
-    
+
     newData.append('file', file);
     props.addItem(newData); 
   };
