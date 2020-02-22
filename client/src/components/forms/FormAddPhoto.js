@@ -17,6 +17,9 @@ const FormAddPhoto = props => {
     props.addItem(newData); 
   };
 
+  // You other code here....
+
+};
 
   const handleSelectedFile = e => {
     e.preventDefault();
