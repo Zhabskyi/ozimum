@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Photos.module.scss";
 import { withRouter } from "react-router-dom";
-//import Item from "./item/Item";
+import Photo from './photo/Photo';
 import Spinner from "../spinner/Spinner";
 import Filter from "../filter/Filter";
 
 const Photos = props => {
 
 
-  const { photos, getPhotos, loading } = props;
+  const { photos, loadPhotos, loading } = props;
   const [checkedCategory, setCategory] = useState("all");
 
   useEffect(() => {
-    getPhotos();
+    loadPhotos();
     // eslint-disable-next-line
   }, []);
 
@@ -20,7 +20,7 @@ const Photos = props => {
     setCategory(e);
   };
 
-  const postalItems = (
+  const photos = (
     <>
       {checkedCategory === "all"
         ? photos?.map(photo => <Photo key={photo.id} photo={photo} />)

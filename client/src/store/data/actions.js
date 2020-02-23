@@ -8,7 +8,7 @@ import {
 import axios from '../../utils/axios-instance';
 
 
-export  const getPhotos = async (dispatch) => {
+export  const loadPhotos = async (dispatch) => {
     try {
       const res = await axios.get("http://localhost:8001/api/photos");
       const revItems = Object.values(res.data).reverse()
