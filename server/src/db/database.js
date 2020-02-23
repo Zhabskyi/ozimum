@@ -44,7 +44,7 @@ const getUserById = function(db, userId) {
     .catch(err => console.log(err));
 };
 
-const addPhoto = function(db, item) {
+const addPhoto = function(db, photo) {
   return db
     .query(
       `

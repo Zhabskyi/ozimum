@@ -31,18 +31,16 @@ module.exports = db => {
 
       const file = await Jimp.read(Buffer.from(image.buffer, 'base64'))
         .then(async image => {
-          
-          const background = await Jimp.read('https://url/background.png');
-          const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
+          const background = await Jimp.read('https://ozimum.s3-us-west-2.amazonaws.com/background.png');
 
           image.resize(Jimp.AUTO, 900);
           image.composite(background, 1000, 700);
-          image.print(font, 1000, 700, 'Logo');
           return image.getBufferAsync(Jimp.AUTO);
         })
         .catch(err => {
           res.status(500).json({ msg: 'Server Error', error: err });
         });
+
 
       const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
 
@@ -78,7 +76,7 @@ module.exports = db => {
             res.send(photos);
           }
         } catch (err) {
-          res.status(500).json({ msg: 'Server Error', error: err });
+          res.status(500).json({ msg: 'Server Error', error: err, info: info });
         }
       });
     } catch (err) {

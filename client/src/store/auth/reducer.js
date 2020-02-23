@@ -7,17 +7,16 @@ import {
   AUTH_ERROR,
   ADMIN_LOGIN,
   ADMIN_LOGOUT
-} from "./actionTypes";
+} from './actionTypes';
 
 const INITIAL_STATE = {
   isAuthenticated: false,
   isAdmin: false,
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem('token'),
   loading: false,
   user: null,
   error: null
 };
-
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -30,7 +29,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -38,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false
       };
     case ADMIN_LOGIN:
-      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -49,7 +48,7 @@ export default (state = INITIAL_STATE, action) => {
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
@@ -59,16 +58,11 @@ export default (state = INITIAL_STATE, action) => {
         user: null,
         error: action.payload
       };
-    case ADMIN_LOGIN:
+    case ADMIN_LOGOUT:
       return {
         ...state,
-        isAdmin: true
-      }
-      case ADMIN_LOGOUT:
-        return {
-          ...state,
-          isAdmin: false
-        }
+        isAdmin: false
+      };
     default:
       return state;
   }

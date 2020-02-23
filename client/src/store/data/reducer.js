@@ -2,7 +2,8 @@ import {
   ADD_PHOTO,
   EDIT_PHOTO,
   DELETE_PHOTO,
-  PHOTO_ERROR
+  PHOTO_ERROR,
+  GET_PHOTOS
 } from "./actionTypes";
 
 const INITIAL_STATE = {
@@ -14,6 +15,12 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   
   switch (action.type) {
+    case GET_PHOTOS:
+      return {
+        ...state,
+        photos: action.payload,
+        loading: false
+      };
     case ADD_PHOTO:
       return {
         ...state,
@@ -43,3 +50,4 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state };
   }
 };
+

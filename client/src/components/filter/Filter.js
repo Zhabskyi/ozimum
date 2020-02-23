@@ -1,24 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 //import classes from './Filter.module.scss';
 import './Filter.css';
 //import ItemContext from "../../context/Item/ItemContext";
 
 const Filter = props => {
-  // const itemContext = useContext(ItemContext);
-
-  // const { getUserByPostal } = itemContext;
-
-  const [postalInput, setPostalInput] = useState('');
-
-  // useEffect(() => {
-  //   if (postalInput) {
-  //     getUserByPostal(postalInput);
-  //   }
-  //   // eslint-disable-next-line
-  // }, [postalInput]);
 
   const handleChange = async event => {
-    setPostalInput(event.target.value.toUpperCase());
+    
   };
 
   return (
