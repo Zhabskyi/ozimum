@@ -3,7 +3,8 @@ import {
   EDIT_PHOTO,
   DELETE_PHOTO,
   PHOTO_ERROR,
-  GET_PHOTOS
+  GET_PHOTOS,
+  SET_LOADING
 } from "./actionTypes";
 
 const INITIAL_STATE = {
@@ -15,6 +16,11 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   
   switch (action.type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     case GET_PHOTOS:
       return {
         ...state,

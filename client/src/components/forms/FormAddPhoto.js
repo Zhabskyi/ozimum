@@ -77,9 +77,9 @@ const FormAddPhoto = props => {
               })}
             >
               <option value=''>--Please choose an option--</option>
-              <option value='tools'>Tools</option>
-              <option value='sports'>Sports Equipment</option>
-              <option value='electronics'>Electronics</option>
+              <option value='calgary'>Calgary</option>
+              <option value='oilfield'>Oilfield</option>
+              <option value='nature'>Nature</option>
             </select>
           </div>
           {errors.category && (

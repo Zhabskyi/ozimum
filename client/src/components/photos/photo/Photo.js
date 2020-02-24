@@ -5,11 +5,9 @@ const Photo = props => {
   const { id, photo } = props;
 
   return (
-    <div className={classes.container}>
-      <div className={classes.photo}>
-        <img src={photo} alt='item' className={classes.photo} />
-      </div>
-    </div>
+    <article>
+        <img src={photo} alt='item' className={classes.article_img} />
+    </article>
   );
 };
 

@@ -1,7 +1,7 @@
-.container {
-  display: flex;
-  justify-content: flex-start;
-  padding: 0 20px;
-  flex-wrap: wrap;
-  position: relative;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  align-items: stretch;
+  grid-gap: 10px;
+  margin: 20px;
 }

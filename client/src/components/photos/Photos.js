@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
-import classes from "./Photos.module.scss";
-import { withRouter } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import classes from './Photos.module.scss';
+import { withRouter } from 'react-router-dom';
 import Photo from './photo/Photo';
-import Spinner from "../spinner/Spinner";
-import Filter from "../filter/Filter";
+import Spinner from '../spinner/Spinner';
+import Filter from '../filter/Filter';
 
 const Photos = props => {
-
-
   const { photos, loadPhotos, loading } = props;
-  const [checkedCategory, setCategory] = useState("all");
+  const [checkedCategory, setCategory] = useState('all');
 
   useEffect(() => {
     loadPhotos();
@@ -20,40 +18,29 @@ const Photos = props => {
     setCategory(e);
   };
 
-  const photos = (
-    <>
-      {checkedCategory === "all"
-        ? photos?.map(photo => <Photo key={photo.id} photo={photo} />)
-        : photos?.map(photo =>
-            checkedCategory === photo.category ? (
-              <Photo key={photo.id} photo={photo} />
-            ) : null
-          )}
-    </>
-  );
+  // const photos = (
+  //   <>
+  //     {checkedCategory === "all"
+  //       ? photos?.map(photo => <Photo key={photo.id} photo={photo} />)
+  //       : photos?.map(photo =>
+  //           checkedCategory === photo.category ? (
+  //             <Photo key={photo.id} photo={photo} />
+  //           ) : null
+  //         )}
+  //   </>
+  // );
 
   return (
     <>
-      <Filter onFilter={onFilter} checkedCategory={checkedCategory} />
-      <div className={classes.container}>
-        {photo !== null && !loading ? (
-          photos !== null ? (
-            photos
-          ) : (
-            <>
-              {checkedCategory === "all"
-                ? photo.map(photo => <Photo key={photo.id} photo={photo} />)
-                : photo.map(photo =>
-                    checkedCategory === photo.category ? (
-                      <Photo key={photo.id} item={photo} />
-                    ) : null
-                  )}
-            </>
-          )
+      <section className={classes.cards}>
+        {photos !== null && !loading ? (
+          photos?.map(item => (
+            <Photo key={item.id} photo={item.photo} id={item.id} />
+          ))
         ) : (
           <Spinner />
         )}
-      </div>
+      </section>
     </>
   );
 };

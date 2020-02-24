@@ -3,30 +3,34 @@ import {
   EDIT_PHOTO,
   DELETE_PHOTO,
   GET_PHOTOS,
-  PHOTO_ERROR
-} from "./actionTypes";
+  PHOTO_ERROR,
+  SET_LOADING
+} from './actionTypes';
 import axios from '../../utils/axios-instance';
 
-
-export  const loadPhotos = async (dispatch) => {
-    try {
-      const res = await axios.get("http://localhost:8001/api/photos");
-      const revItems = Object.values(res.data).reverse()
-      dispatch({
-        type: GET_PHOTOS,
-        payload: revItems
-      });
-    } catch (err) {
-      dispatch({
-        type: PHOTO_ERROR,
-        payload: err.response
-      });
-    }
-  };
-
-export const addPhoto = photo => async (dispatch) => {
+export const loadPhotos = () => async dispatch => {
   try {
-    const res = await axios.post("/photos", photo);
+    const res = await axios.get('/photos');
+    const revItems = Object.values(res.data).reverse();
+    dispatch({
+      type: GET_PHOTOS,
+      payload: revItems
+    });
+  } catch (err) {
+    dispatch({
+      type: PHOTO_ERROR,
+      payload: err.response
+    });
+  }
+};
+
+export const addPhoto = photo => async dispatch => {
+  dispatch({
+    type: SET_LOADING
+  });
+
+  try {
+    const res = await axios.post('/photos', photo);
 
     dispatch({
       type: ADD_PHOTO,
