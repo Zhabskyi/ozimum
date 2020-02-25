@@ -31,8 +31,8 @@ const Photos = props => {
   // );
 
   return (
-    <div className={classes.cntainer}>
-      <Filter />
+    <div className={classes.container}>
+      <Filter onFilter={onFilter} checkedCategory={checkedCategory} />
       <section className={classes.cards}>
         {photos !== null && !loading ? (
           photos?.map(item => (

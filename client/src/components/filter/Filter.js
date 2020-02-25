@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-//import classes from './Filter.module.scss';
+import React from 'react';
 import './Filter.css';
-//import ItemContext from "../../context/Item/ItemContext";
 
 const Filter = props => {
-
-  const handleChange = async event => {
-    
-  };
-
   return (
     <div className='tabs'>
       <div className='tab_2'>
-        <label htmlFor='tab2-1'>All</label>
+        <label
+          style={
+            props.checkedCategory === 'all'
+              ? { backgroundColor: '#27a1a1' }
+              : null
+          }
+          htmlFor='tab2-1'
+        >
+          All
+        </label>
         <input
           className='radio-input'
           type='radio'
@@ -25,7 +27,16 @@ const Filter = props => {
         />
       </div>
       <div className='tab_2'>
-        <label htmlFor='tab2-2'>Calgary</label>
+        <label
+          htmlFor='tab2-2'
+          style={
+            props.checkedCategory === 'calgary'
+              ? { backgroundColor: '#27a1a1' }
+              : null
+          }
+        >
+          Calgary
+        </label>
         <input
           className='radio-input'
           type='radio'
@@ -38,11 +49,20 @@ const Filter = props => {
         />
       </div>
       <div className='tab_2'>
-        <label htmlFor='tab2-3'>Oilfield</label>
+        <label
+          htmlFor='tab2-3'
+          style={
+            props.checkedCategory === 'oilfield'
+              ? { backgroundColor: '#27a1a1' }
+              : null
+          }
+        >
+          Oilfield
+        </label>
         <input
           className='radio-input'
           type='radio'
-          value='calgary'
+          value='oilfield'
           id='tab2-3'
           checked={props.checkedCategory === 'oilfield'}
           onChange={e => {
@@ -51,11 +71,20 @@ const Filter = props => {
         />
       </div>
       <div className='tab_2'>
-        <label htmlFor='tab2-4'>Nature</label>
+        <label
+          htmlFor='tab2-4'
+          style={
+            props.checkedCategory === 'nature'
+              ? { backgroundColor: '#27a1a1' }
+              : null
+          }
+        >
+          Nature
+        </label>
         <input
           className='radio-input'
           type='radio'
-          value='calgary'
+          value='nature'
           id='tab2-4'
           checked={props.checkedCategory === 'nature'}
           onChange={e => {
