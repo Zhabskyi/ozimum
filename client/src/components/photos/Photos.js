@@ -18,29 +18,25 @@ const Photos = props => {
     setCategory(e);
   };
 
-  // const photos = (
-  //   <>
-  //     {checkedCategory === "all"
-  //       ? photos?.map(photo => <Photo key={photo.id} photo={photo} />)
-  //       : photos?.map(photo =>
-  //           checkedCategory === photo.category ? (
-  //             <Photo key={photo.id} photo={photo} />
-  //           ) : null
-  //         )}
-  //   </>
-  // );
+  const renderPhotos = (
+    <>
+      {checkedCategory === 'all'
+        ? photos?.map(item => (
+            <Photo key={item.id} photo={item.photo} id={item.id} />
+          ))
+        : photos?.map(item =>
+            checkedCategory === item.category ? (
+              <Photo key={item.id} photo={item.photo} id={item.id} />
+            ) : null
+          )}
+    </>
+  );
 
   return (
     <div className={classes.container}>
       <Filter onFilter={onFilter} checkedCategory={checkedCategory} />
       <section className={classes.cards}>
-        {photos !== null && !loading ? (
-          photos?.map(item => (
-            <Photo key={item.id} photo={item.photo} id={item.id} />
-          ))
-        ) : (
-          <Spinner />
-        )}
+        {photos !== null && !loading ? renderPhotos : <Spinner />}
       </section>
     </div>
   );
