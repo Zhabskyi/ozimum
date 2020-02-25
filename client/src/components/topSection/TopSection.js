@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './TopSection.module.scss';
-import Filter from '../filter/Filter';
 
 const TopSection = () => {
   return (
@@ -11,7 +10,6 @@ const TopSection = () => {
         dimensions of 6000x4000 and resolution 300x300. Beautiful pictures by
         OZ.
       </p>
-      <Filter />
     </div>
   );
 };

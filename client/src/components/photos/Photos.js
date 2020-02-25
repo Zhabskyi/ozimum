@@ -31,7 +31,8 @@ const Photos = props => {
   // );
 
   return (
-    <>
+    <div className={classes.cntainer}>
+      <Filter />
       <section className={classes.cards}>
         {photos !== null && !loading ? (
           photos?.map(item => (
@@ -41,7 +42,7 @@ const Photos = props => {
           <Spinner />
         )}
       </section>
-    </>
+    </div>
   );
 };
 
