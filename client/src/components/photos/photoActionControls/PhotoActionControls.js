@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './PhotoActionControls.module.scss';
 import Button from '../../button/Button';
-import Basket from '../../../static/basket_1.png';
 
 const PhotoActionControls = () => {
   return (

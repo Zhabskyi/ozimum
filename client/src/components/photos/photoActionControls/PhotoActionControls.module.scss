@@ -16,3 +16,9 @@
 button:hover .cart {
   fill: rgb(39, 39, 39);
 }
+
+button:hover:before {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%,0,0);
+}
