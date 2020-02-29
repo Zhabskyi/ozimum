@@ -10,15 +10,45 @@
   width: 20px;
   height: 20px;
   fill: white;
-
 }
+
+.message {
+  position: absolute;
+  font-size: 12px;
+  top: -2.925rem;
+  left: 50%;
+  max-width: 140px;
+  overflow-wrap: break-word;
+  padding: 0.625rem;
+  color: #080808;
+  background-color: #fff;
+  border: 1px solid hsla(0, 0%, 40%, 0.4);
+  border-radius: 0.25em;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate3d(-50%, 4px, 0);
+  transition: all 0.3s ease;
+}
+
 
 button:hover .cart {
   fill: rgb(39, 39, 39);
 }
 
+button:hover .message {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
 button:hover:before {
   visibility: visible;
   opacity: 1;
-  transform: translate3d(-50%,0,0);
+  transform: translate3d(-50%, 0, 0);
+}
+
+button:first-of-type:hover:before {
+  visibility: hidden;
+  opacity: 0;
 }

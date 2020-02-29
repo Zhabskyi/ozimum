@@ -5,8 +5,11 @@ import Button from '../../button/Button';
 const PhotoActionControls = () => {
   return (
     <>
-      <Button download>Download for Free</Button>
+      <Button download>
+        Download for Free
+      </Button>
       <Button>
+        <div className={classes.message}>Add to basket</div>
         <svg className={classes.cart}>
           <g>
             <path
