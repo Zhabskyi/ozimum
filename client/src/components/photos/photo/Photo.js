@@ -1,12 +1,20 @@
 import React from 'react';
 import classes from './Photo.module.scss';
+import { Link } from 'react-router-dom';
 
 const Photo = props => {
-  const { id, photo } = props;
+  const { id, photo, title } = props;
 
   return (
-    <article>
-        <img src={photo} alt='item' className={classes.article_img} />
+    <article className={classes.article}>
+      <Link className={classes.link} to={`photo/${id}`}>
+        <figure className={classes.article__figure}>
+          <img src={photo} alt='item' className={classes.article__figure_img} />
+        </figure>
+      </Link>
+      <div className={classes.article__title}>
+        <div className={classes.article__title_text}>{title}</div>
+      </div>
     </article>
   );
 };

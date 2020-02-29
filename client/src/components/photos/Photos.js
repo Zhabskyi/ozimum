@@ -22,11 +22,21 @@ const Photos = props => {
     <>
       {checkedCategory === 'all'
         ? photos?.map(item => (
-            <Photo key={item.id} photo={item.photo} id={item.id} />
+            <Photo
+              key={item.id}
+              photo={item.photo}
+              id={item.id}
+              title={item.title}
+            />
           ))
         : photos?.map(item =>
             checkedCategory === item.category ? (
-              <Photo key={item.id} photo={item.photo} id={item.id} />
+              <Photo
+                key={item.id}
+                photo={item.photo}
+                id={item.id}
+                title={item.title}
+              />
             ) : null
           )}
     </>
