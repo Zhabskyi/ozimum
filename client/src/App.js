@@ -24,6 +24,13 @@ const App = props => {
           <AdminRoute exact path='/admin'>
             <Admin />
           </AdminRoute>
+          {/* <Route
+            path='/download-free'
+            component={(url) => {
+              window.location.href = 'https://s3-us-west-2.amazonaws.com/ozimum/tacoma.jpg';
+              return null;
+            }} */}
+          />
         </Switch>
       </div>
     </Router>

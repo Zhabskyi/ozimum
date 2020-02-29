@@ -9,6 +9,12 @@ const AWS = require('aws-sdk');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+let s3bucket = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
+});
+
 // get user api/auth, private
 
 module.exports = db => {
@@ -31,7 +37,9 @@ module.exports = db => {
 
       const file = await Jimp.read(Buffer.from(image.buffer, 'base64'))
         .then(async image => {
-          const background = await Jimp.read('https://ozimum.s3-us-west-2.amazonaws.com/background.png');
+          const background = await Jimp.read(
+            'https://ozimum.s3-us-west-2.amazonaws.com/background.png'
+          );
 
           image.resize(Jimp.AUTO, 900);
           image.composite(background, 1000, 700);
@@ -41,14 +49,7 @@ module.exports = db => {
           res.status(500).json({ msg: 'Server Error', error: err });
         });
 
-
       const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
-
-      let s3bucket = new AWS.S3({
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-        region: process.env.AWS_REGION
-      });
 
       //Where you want to store your file
 
@@ -81,6 +82,27 @@ module.exports = db => {
       });
     } catch (err) {
       res.status(500).json({ msg: 'Server Error', error: err });
+    }
+  });
+
+  router.get('/photos/:title', async (req, res) => {
+    const key = req.params.title;
+    const params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: key
+    };
+    try {
+      s3bucket.getObject(params, async (error, data) => {
+        if (error != null) {
+          console.log('Failed to retrieve an object: ' + error);
+        } else {
+          console.log(data);
+          res.send(data)
+          // do something with data.Body
+        }
+      });
+    } catch (err) {
+      res.status(500).send('Server Error');
     }
   });
 

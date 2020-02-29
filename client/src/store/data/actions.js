@@ -43,3 +43,16 @@ export const addPhoto = photo => async dispatch => {
     });
   }
 };
+
+export const downloadFree = title => async (dispatch) => {
+  try {
+    const res = await axios.get(`/photos/${title}`);
+    console.log(res.toString('base64'))
+  } catch (err) {
+    dispatch({
+      type: PHOTO_ERROR,
+      payload: err.response
+    });
+  }
+
+}

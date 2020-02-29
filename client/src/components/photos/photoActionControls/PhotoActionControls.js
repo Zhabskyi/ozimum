@@ -1,11 +1,14 @@
 import React from 'react';
 import classes from './PhotoActionControls.module.scss';
 import Button from '../../button/Button';
+import { findKeyName } from '../../../helpers/helperFunctions';
 
-const PhotoActionControls = () => {
+const PhotoActionControls = ({ downloadFree, photo }) => {
+  const key = findKeyName(photo);
+
   return (
     <>
-      <Button download>
+      <Button onClick={() => downloadFree(key)} download>
         Download for Free
       </Button>
       <Button>
@@ -28,7 +31,6 @@ const PhotoActionControls = () => {
             ></polygon>
           </g>
         </svg>
-        {/* <img className={classes.basket} src={Basket} alt='Basket' /> */}
       </Button>
     </>
   );
