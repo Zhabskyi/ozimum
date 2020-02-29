@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Photo.module.scss';
 import { Link } from 'react-router-dom';
+import PhotoActionControls from '../photoActionControls/PhotoActionControls';
 
 const Photo = props => {
   const { id, photo, title } = props;
@@ -14,6 +15,9 @@ const Photo = props => {
       </Link>
       <div className={classes.article__title}>
         <div className={classes.article__title_text}>{title}</div>
+      </div>
+      <div className={classes.actions}>
+        <PhotoActionControls />
       </div>
     </article>
   );

@@ -11,7 +11,7 @@ const Button = props => {
     props.danger ? classes.danger :
     props.cancel ? classes.cancel :
     props.edit ? classes.edit :
-    props.details ? classes.details :
+    props.download ? classes.download :
     props.details_lg ? classes.details_lg : null
   );
 
