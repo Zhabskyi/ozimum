@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const database = require('../db/database.js');
 const Jimp = require('jimp');
+const fs = require('fs');
 
 require('dotenv').config();
 const multer = require('multer');
@@ -97,8 +98,12 @@ module.exports = db => {
           console.log('Failed to retrieve an object: ' + error);
         } else {
           console.log(data);
-          res.send(data)
-          // do something with data.Body
+          const buff =Buffer.from(data.Body, 'binary')
+
+          res.writeHead(200, { 'Content-Type': 'image/jpeg',  'Content-Disposition': `attachment; filename=${key}`});
+          res.write(buff, 'binary');
+          res.end(null, 'binary');
+        // res.send(data);
         }
       });
     } catch (err) {

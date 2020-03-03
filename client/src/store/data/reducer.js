@@ -4,13 +4,15 @@ import {
   DELETE_PHOTO,
   PHOTO_ERROR,
   GET_PHOTOS,
-  SET_LOADING
+  SET_LOADING,
+  SET_PHOTO
 } from "./actionTypes";
 
 const INITIAL_STATE = {
   photos: null,
   loading: false,
-  error: null
+  error: null,
+  photo: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -52,6 +54,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload
       };
+
+      case SET_PHOTO:
+        return {
+          ...state,
+          photo: action.payload
+        };
     default:
       return { ...state };
   }

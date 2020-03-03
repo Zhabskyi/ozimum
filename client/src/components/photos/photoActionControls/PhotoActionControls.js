@@ -4,7 +4,11 @@ import Button from '../../button/Button';
 import { findKeyName } from '../../../helpers/helperFunctions';
 
 const PhotoActionControls = ({ downloadFree, photo }) => {
-  const key = findKeyName(photo);
+  let key;
+  if (photo) {
+    key = findKeyName(photo);
+  }
+  
 
   return (
     <>
