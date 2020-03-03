@@ -93,19 +93,30 @@ module.exports = db => {
       Key: key
     };
     try {
-      s3bucket.getObject(params, async (error, data) => {
-        if (error != null) {
-          console.log('Failed to retrieve an object: ' + error);
-        } else {
-          console.log(data);
-          const buff =Buffer.from(data.Body, 'binary')
+       //res.attachment(`${key}`);
+       const s3Stream = s3bucket.getObject(params).createReadStream();
+       res.writeHead(200, { 'Content-Disposition': `attachment; filename=${key}`, 'Content-Type': 'image/jpeg'});
+       s3Stream.pipe(res);
+                    // s3bucket.getObject(params, async (error, data) => {
+                    //   if (error != null) {
+                    //     console.log('Failed to retrieve an object: ' + error);
+                    //     return error;
+                    //   } else {
+                    //     console.log(data);
+                    //     const buff = await Buffer.from(data.Body, 'base64');
+                      
+                    //     res.writeHead(200, {
+                    //       'Content-Type': 'image/jpeg',
+                    //       'Content-Disposition': `attachment; filename=${key}`,
+                    //       'Content-Length': buff.byteLength
+                    //     });
 
-          res.writeHead(200, { 'Content-Type': 'image/jpeg',  'Content-Disposition': `attachment; filename=${key}`});
-          res.write(buff, 'binary');
-          res.end(null, 'binary');
-        // res.send(data);
-        }
-      });
+                    //     res.write(buff, 'binary');
+                    //     res.end(null, 'binary');
+                    //     // res.attachment(`${key}`);
+                    //     // res.send(buff);
+                    //   }
+                    // });
     } catch (err) {
       res.status(500).send('Server Error');
     }
