@@ -8,14 +8,12 @@ const PhotoActionControls = ({ downloadFree, photo }) => {
   if (photo) {
     key = findKeyName(photo);
   }
-  
 
   return (
-    <><form onSubmit={(e) => {e.preventDefault(); downloadFree(key)}}>
-      <button type="submit"  >
+    <>
+      <Button onClick={() => downloadFree(key)} download>
         Download for Free
-      </button>
-      </form>
+      </Button>
       <Button>
         <div className={classes.message}>Add to basket</div>
         <svg className={classes.cart}>
