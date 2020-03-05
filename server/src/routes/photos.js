@@ -93,14 +93,19 @@ module.exports = db => {
       Key: key
     };
     try {
-      const s3Stream = s3bucket.getObject(params).createReadStream();
+      const s3Stream = s3bucket.getObject(params);
 
-      res.writeHead(200, {
-        'Content-Disposition': `attachment; filename=${key}`,
-        'Content-Type': 'image/jpeg'
-      });
+      if ( s3Stream.response.data === null ) {
+        res.status(404).send("Page not found!");
+      } else {
+        const stream = s3Stream.createReadStream();
+        res.writeHead(200, {
+          'Content-Disposition': `attachment; filename=${key}`,
+          'Content-Type': 'application/octet-stream'
+        });
+        stream.pipe(res);
+      }
 
-      s3Stream.pipe(res);
     } catch (err) {
       res.status(500).send('Server Error');
     }

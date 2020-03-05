@@ -7,7 +7,6 @@ import Logo from '../../../static/Logo.png';
 
 const NavbarItems = props => {
   const { user, isAuthenticated, isAdmin, onLogout } = props;
-  console.log(props)
 
   useEffect(() => {
     if (!isAuthenticated) {

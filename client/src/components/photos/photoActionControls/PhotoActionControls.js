@@ -14,6 +14,7 @@ const PhotoActionControls = ({ downloadFree, photo }) => {
       <Button onClick={() => downloadFree(key)} download>
         Download for Free
       </Button>
+      {/* <a href="http://localhost:3050/api/photos/${}.jpg" target='_blank'> Download adsasdasda </a> */}
       <Button>
         <div className={classes.message}>Add to basket</div>
         <svg className={classes.cart}>

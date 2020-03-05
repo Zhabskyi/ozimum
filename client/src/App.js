@@ -7,6 +7,7 @@ import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
 import AdminRoute from './containers/AdminRoute';
 import Admin from './pages/adminContainer/Admin';
+import PhotoItem from "./pages/photoItem/PhotoItem";
 
 const App = props => {
   useEffect(() => {
@@ -21,15 +22,10 @@ const App = props => {
           <Route exact path='/' component={Home} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/photo/:id' component={PhotoItem} />
           <AdminRoute exact path='/admin'>
             <Admin />
           </AdminRoute>
-          {/* <Route
-            path='/download-free'
-            component={(url) => {
-              window.location.href = 'https://s3-us-west-2.amazonaws.com/ozimum/tacoma.jpg';
-              return null;
-            }} */}
           />
         </Switch>
       </div>

@@ -45,19 +45,7 @@ export const addPhoto = photo => async dispatch => {
   }
 };
 
-export const downloadFree = title => dispatch => {
-  axios({
-    method: 'get',
-    url: `/photos/${title}`
-  })
-    .then((res, e) => {
-      window.location = `http://localhost:3050/api/photos/${title}`;
-      e.preventDefault();
-    })
-    .catch(err => {
-      dispatch({
-        type: PHOTO_ERROR,
-        payload: err.response
-      });
-    });
+export const downloadFree = title => (dispatch) => {
+  window.location = `http://localhost:3050/api/photos/${title}`;
+
 };
