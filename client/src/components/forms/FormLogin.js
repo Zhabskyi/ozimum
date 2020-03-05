@@ -38,6 +38,7 @@ const Form = props => {
           <div className={classes.inputBox}>
             <label htmlFor='email'>Email</label>
             <input
+            id="login_email"
               name='email'
               placeholder='email@mail.com'
               type='email'
