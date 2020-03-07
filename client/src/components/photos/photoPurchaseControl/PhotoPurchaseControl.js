@@ -3,8 +3,20 @@ import { withRouter } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import './PhotoPurchaseControl.css';
 
-const PhotoPurchaseControl = props => {
+const PhotoPurchaseControl = () => {
   const [checkedCategory, setCategory] = useState('Small');
+
+  const price = (
+    <>
+      {checkedCategory === 'Small' ? (
+        'FREE'
+      ) : (
+        <>
+          &#36; <span>5.00</span>
+        </>
+      )}
+    </>
+  );
   return (
     <>
       <p className='purchase'>PURCHASE THE PHOTO</p>
@@ -42,7 +54,12 @@ const PhotoPurchaseControl = props => {
                 }}
               />
               <span className='design'></span>
-              <span>Large</span>
+              <span className='selection_item_details_size'>
+                Large
+                <span className='selection_item_details_description'>
+                  6000 x 4000 300dpi | 15MB
+                </span>
+              </span>
             </label>
           </section>
           <div className='selection_item_price'>
@@ -50,14 +67,10 @@ const PhotoPurchaseControl = props => {
           </div>
         </div>
       </div>
-      <div className='purchase_price_final'>
-        {checkedCategory === 'Small' ? (
-          'FREE'
-        ) : (
-          <>
-            &#36; <span>5.00</span>
-          </>
-        )}
+      <div className='purchase_price_final'>{price}</div>
+      <div className='purchase_buttons'>
+        <Button confirm>GET THIS IMAGE FOR {price}</Button>
+        <Button basket>ADD TO BASKET</Button>
       </div>
     </>
   );

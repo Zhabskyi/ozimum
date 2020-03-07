@@ -30,9 +30,21 @@
   margin: auto 0;
   text-align: center;
 }
-.selection_item_price span {
-  font-size: 20px;
+.selection_item_details_description {
+  color: #ccc;
+  width: 200px;
+  position: absolute;
+  font-size: 12px;
+  top: 30px;
+  left: 0;
 }
+
+.selection_item_details_size {
+  font-size: 20px;
+  position: relative;
+}
+
+
 
 .selection_item_details {
   display: flex;
@@ -57,7 +69,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: -1;
+    z-index: 100;
 }
 
 .design {
@@ -132,8 +144,12 @@
 }
 
 .purchase_price_final {
-  margin: auto;
   text-align: center;
   padding: 20px;
-  font-size: 24px;
+  font-size: 32px;
+}
+
+
+.purchase_buttons {
+  width: 80%;
 }

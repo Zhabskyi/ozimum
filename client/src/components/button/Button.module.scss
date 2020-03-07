@@ -59,15 +59,38 @@
 }
 
 .confirm {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 80px;
+  width: 100%;
   font-weight: 300;
   letter-spacing: 2px;
   color: $base-font-color;
   background-color: transparent;
   &:hover {
+    border: 1px solid #ccc;
     color: $white;
     background-color: $color-tertiary-dark;
   }
   
+}
+
+.basket {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 80px;
+  width: 100%;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: $base-font-color;
+  background-color: $background_2;
+  &:before {
+    display: none;
+  }
+  &:hover {
+    border: 1px solid #ccc;
+    background-color: #193c5f;
+  }
 }
 
 .cancel {
@@ -103,21 +126,6 @@
   // }
 }
 
-.edit {
-  border: 0;
-  font-size: 1.2rem;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;;
-  color: $color-secondary-dark;
-  border-color: $details-color;
-  background-color: transparent;
-  &:hover {
-    color: $color-tertiary-dark;
-    background-color: transparent;
-    border:none;
-  }
-}
 
 .button:last-of-type {
   margin-right: 0;

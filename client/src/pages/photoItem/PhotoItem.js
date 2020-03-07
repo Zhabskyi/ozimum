@@ -48,7 +48,6 @@ const PhotoItem = props => {
             <div className={classes.container__right__purchase}>
               <PhotoPurchaseControl />
             </div>
-            <div className={classes.container__right__details}></div>
           </div>
         </div>
       ) : null}

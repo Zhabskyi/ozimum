@@ -10,7 +10,7 @@ const Button = props => {
     props.confirm ? classes.confirm :
     props.danger ? classes.danger :
     props.cancel ? classes.cancel :
-    props.edit ? classes.edit :
+    props.basket ? classes.basket :
     props.download ? classes.download :
     props.details_lg ? classes.details_lg : null
   );
