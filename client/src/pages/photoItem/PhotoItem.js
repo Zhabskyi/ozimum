@@ -19,14 +19,47 @@ const PhotoItem = props => {
   return (
     <>
       {!!photo ? (
-            <article className={classes.article}>
-              <figure className={classes.article__figure}>
-                <img src={photo[0].photo} alt='item' className={classes.article__figure_img} />
-              </figure>
-            <div className={classes.article__title}>
-              <div className={classes.article__title_text}>{photo[0].title}</div>
+        <div className={classes.container}>
+          <div className='container__left'>
+            <div className='container__left__prev'>
+              <div className='container__left__prev__descript'>
+                <h1 className='container__left__prev__descript_title'>
+                  {photo[0].title}
+                </h1>
+                <div className='container__left__prev__descript_text'>
+                  {photo[0].description}
+                </div>
+              </div>
+              <div
+                style={{ backgroundImage: photo[0].photo }}
+                className='container__left__prev__blur'
+              ></div>
+              <div className='container__left__prev__card'>
+                <div className='container__left__prev__card__wrapper'>
+                  <img
+                    src={photo[0].photo}
+                    alt={photo[0].title}
+                    className='container__left__prev__card__wrapper_img'
+                  />
+                </div>
+              </div>
             </div>
-          </article>
+          </div>
+          <div className='container__divider'></div>
+          <div className='container__right'>
+            <div className='container__right__panel'>
+              <div className='container__right__panel__purchase'>
+                <h2 className='container__right__panel__purchase_header'>
+                  PURCHASE THE PHOTO
+                </h2>
+                <div className='container__right__panel__purchase__body'>
+                  <section className='container__right__panel__purchase__body__top'></section>
+                </div>
+              </div>
+              <div className='container__right__panel__details'></div>
+            </div>
+          </div>
+        </div>
       ) : null}
     </>
   );
