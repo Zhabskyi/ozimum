@@ -85,26 +85,11 @@
     height: 100%;
 
     &__purchase {
-      display: block;
-      flex-grow: 1;
-      &_header {
-        margin: 20px auto;
-        font-size: $font-size-lage;
-        display: inline-block;
-        text-align: center;
-        width: 100%;
-      }
-      &__body {
-        margin-left: 20px;
-        margin-right: 20px;
-        @media screen and (min-width: 768px) {
-          margin-left: 42px;
-          margin-right: 42px;
-        }
-        &__top {
-          display: block;
-        }
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
     }
     &__details {
       height: 800px;

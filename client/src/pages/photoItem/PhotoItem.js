@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { browserHistory } from 'connected-react-router';
 import classes from './PhotoItem.module.scss';
-import Photo from '../../components/photos/photo/Photo';
+import PhotoPurchaseControl from '../../containers/photos/PhotoPurchaseControl';
 
 const PhotoItem = props => {
   useEffect(() => {
@@ -47,14 +46,7 @@ const PhotoItem = props => {
           </div>
           <div className={classes.container__right}>
             <div className={classes.container__right__purchase}>
-              <p className={classes.container__right__purchase_header}>
-                PURCHASE THE PHOTO
-              </p>
-              <div className={classes.container__right__purchase__body}>
-                <section
-                  className={classes.container__right__purchase__body__top}
-                ></section>
-              </div>
+              <PhotoPurchaseControl />
             </div>
             <div className={classes.container__right__details}></div>
           </div>
