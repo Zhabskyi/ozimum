@@ -7,7 +7,7 @@ import Register from './containers/forms/FormRegister';
 import Login from './containers/forms/FormLogin';
 import AdminRoute from './containers/AdminRoute';
 import Admin from './pages/adminContainer/Admin';
-import PhotoItem from "./pages/photoItem/PhotoItem";
+import PhotoItem from "./pages/photoItemContainer/PhotoItemContainer";
 
 const App = props => {
   useEffect(() => {
