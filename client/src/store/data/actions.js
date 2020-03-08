@@ -46,6 +46,8 @@ export const addPhoto = photo => async dispatch => {
 };
 
 export const downloadFree = title => (dispatch) => {
+  // const res = axios.get(`/photos/${title}`);
+  // console.log(res)
   window.location = `http://localhost:3050/api/photos/${title}`;
 
 };

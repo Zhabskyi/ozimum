@@ -86,29 +86,34 @@ module.exports = db => {
     }
   });
 
-  router.get('/photos/:title', async (req, res) => {
+  router.get('/photos/:title', (req, res) => {
     const key = req.params.title;
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: key
     };
-    try {
-      const s3Stream = s3bucket.getObject(params);
 
-      if ( s3Stream.response.data === null ) {
-        res.status(404).send("Page not found!");
+    s3bucket.getObject(params, async (err, data) => {
+      if (err) {
+        res.status(404).send('Page not found!');
       } else {
-        const stream = s3Stream.createReadStream();
-        res.writeHead(200, {
-          'Content-Disposition': `attachment; filename=${key}`,
-          'Content-Type': 'application/octet-stream'
-        });
-        stream.pipe(res);
-      }
+        if (data.code === 'NoSuchKey') {
+          res.status(404).send('Page not found!');
+        } else {
+          console.log('DATA', data);
+          const buff = await Buffer.from(data.Body, 'base64');
 
-    } catch (err) {
-      res.status(500).send('Server Error');
-    }
+          res.writeHead(200, {
+            'Content-Type': 'image/jpeg',
+            'Content-Disposition': `attachment; filename=${key}`,
+            'Content-Length': buff.byteLength
+          });
+
+          res.write(buff, 'binary');
+          res.end(null, 'binary');
+        }
+      }
+    });
   });
 
   return router;

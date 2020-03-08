@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
+import { downloadFree } from '../../store/data';
 
 
 import PhotoPurchaseControl from '../../components/photos/photoPurchaseControl/PhotoPurchaseControl';
 
 const mapDispatchToProps = dispatch => ({
- 
+  downloadFree: (title) => dispatch(downloadFree(title))
 });
 
 const mapStateToProps = state => {

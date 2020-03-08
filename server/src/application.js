@@ -57,6 +57,10 @@ module.exports = function application(ENV) {
       });
   }
 
+  app.get('*', (req, res) => {
+    res.status(404).send('Page not found!');
+  })
+
   app.close = function() {
     return db.end();
   };

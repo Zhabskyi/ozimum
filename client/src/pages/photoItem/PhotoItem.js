@@ -13,7 +13,6 @@ const PhotoItem = props => {
   const photoId = +props.match.params.id;
 
   const photo = props.photos?.filter(item => photoId === item.id);
-  console.log(photo, photoId);
 
   return (
     <>
@@ -46,7 +45,7 @@ const PhotoItem = props => {
           </div>
           <div className={classes.container__right}>
             <div className={classes.container__right__purchase}>
-              <PhotoPurchaseControl />
+              <PhotoPurchaseControl  photo={photo[0]}/>
             </div>
           </div>
         </div>

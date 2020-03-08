@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PhotoActionControls from '../../../containers/photos/PhotoActionControls';
 
 const Photo = props => {
-  console.log("PROPS in Photo",props)
   const { id, photo, title } = props;
 
   return (

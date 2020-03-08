@@ -2,8 +2,23 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import './PhotoPurchaseControl.css';
+import { findKeyName } from '../../../helpers/helperFunctions';
 
-const PhotoPurchaseControl = () => {
+const PhotoPurchaseControl = ({ photo, downloadFree }) => {
+
+  let key;
+  if (photo) {
+    key = findKeyName(photo.photo);
+  }
+
+  const download = () => {
+    if (checkedCategory === 'Small') {
+      downloadFree(key);
+    } else if (checkedCategory === 'Large') {
+      //downloadStripe();
+    }
+  };
+
   const [checkedCategory, setCategory] = useState('Small');
 
   const price = (
@@ -69,7 +84,7 @@ const PhotoPurchaseControl = () => {
       </div>
       <div className='purchase_price_final'>{price}</div>
       <div className='purchase_buttons'>
-        <Button confirm>GET THIS IMAGE FOR {price}</Button>
+        <Button onClick={() => download()} confirm>GET THIS IMAGE FOR {price}</Button>
         <Button basket>ADD TO BASKET</Button>
       </div>
     </>
