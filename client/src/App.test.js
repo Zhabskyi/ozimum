@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from "enzyme";
 import configureMockStore from "redux-mock-store";
+import App from './App';
 
 const mockStore = configureMockStore();
 const store = mockStore({});
@@ -11,7 +12,7 @@ describe('Application', () => {
     expect(
       shallow(
           <Provider store={store}>
-              <TestPage />
+              <App/>
           </Provider>
       ).exists(<h1>OZIMUM</h1>)
   ).toBe(true);
