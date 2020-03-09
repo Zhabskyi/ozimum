@@ -1,11 +1,19 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './index';
-import { render } from '@testing-library/react';
-import { app } from './index';
+import { shallow } from "enzyme";
+import configureMockStore from "redux-mock-store";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
 
 describe('Application', () => {
   it('renders without errors', () => {
-    render(app);
+    expect(
+      shallow(
+          <Provider store={store}>
+              <TestPage />
+          </Provider>
+      ).exists(<h1>OZIMUM</h1>)
+  ).toBe(true);
   });
 });
