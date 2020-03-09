@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+
+befor_install:
+  - docker build -t zhabskyi/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true zhabskyi/react-test npm test
+
+after_success:
+  - docker build -t zhabskyi/ozimum-client ./client
+  - docker build -t zhabskyi/ozimum-nginx ./nginx
+  - docker build -t zhabskyi/ozimum-server ./server
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push zhabskyi/ozimum-client
+  - docker push zhabskyi/ozimum-nginx
+  - docker push zhabskyi/ozimum-server
