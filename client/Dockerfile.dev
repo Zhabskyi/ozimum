@@ -1,0 +1,7 @@
+FROM node:latest
+WORKDIR /src
+ENV ADMIN_EMAIL=$DOCKER_ADMIN_EMAIL
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "start" ]
