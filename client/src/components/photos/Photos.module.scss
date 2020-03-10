@@ -1,9 +1,16 @@
+@import '../../styles/core.scss';
 .container {
   display: flex;
   flex-direction: column;
+  @include sm {
+    align-items: center;
+  }
 }
 
 .cards {
+  @include sm {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   align-items: stretch;

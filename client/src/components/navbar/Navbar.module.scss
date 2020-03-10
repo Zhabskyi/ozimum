@@ -23,6 +23,11 @@
     align-items: center;
     flex: 1;
     &_item {
+      &:first-child {
+        @include md {
+          display: none;
+        }
+      }
       margin: 0 auto;
       width: 100%;
       height: 100%;
