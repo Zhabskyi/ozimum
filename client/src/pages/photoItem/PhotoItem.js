@@ -8,6 +8,7 @@ const PhotoItem = props => {
     if (!props.photos) {
       props.history.push('/');
     }
+    // eslint-disable-next-line
   }, []);
 
   const photoId = +props.match.params.id;
