@@ -8,6 +8,7 @@ import Login from './containers/forms/FormLogin';
 import AdminRoute from './containers/AdminRoute';
 import Admin from './pages/adminContainer/Admin';
 import PhotoItem from "./pages/photoItemContainer/PhotoItemContainer";
+import Price from "./components/price/Price";
 
 const App = props => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const App = props => {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/photo/:id' component={PhotoItem} />
+          <Route exact path='/pricing' component={Price} />
           <AdminRoute exact path='/admin'>
             <Admin />
           </AdminRoute>

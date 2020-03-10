@@ -6,7 +6,7 @@ const TopSection = () => {
     <div className={classes.container}>
         <h1 className={classes.header}>OZIMUM</h1>
       <p className={classes.slogan}>
-        Privete, small but very good quality photos stock. All pictures are in
+        Private, small but very good quality photos stock. All pictures are in
         dimensions of 6000x4000 and resolution 300x300. Beautiful pictures by
         OZ.
       </p>
