@@ -32,6 +32,7 @@ module.exports = db => {
   //Add photo
   router.post('/photos', upload.single('file'), async (req, res) => {
     let info = req.body;
+    console.log(info);
 
     try {
       const image = req.file;
@@ -115,6 +116,14 @@ module.exports = db => {
       }
     });
   });
+
+
+
+
+
+  router.post('/photos/single',async  (req, res) => {
+    console.log("REQ =====>>>>>>>",req);
+  })
 
   return router;
 };

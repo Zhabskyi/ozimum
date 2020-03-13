@@ -9,13 +9,23 @@ const FormAddPhoto = props => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-
     let newData = new FormData();
     Object.keys(data).forEach(key => newData.append(key, data[key]));
     newData.append('file', file);
+
+    
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      const image = reader.result;
+      props.addSingleImage(image);
+    };
+
+    reader.onerror = function() {
+      console.log("ERROR IN file reader")
+    };
     props.addItem(newData);
   };
-
 
   const handleSelectedFile = e => {
     e.preventDefault();
